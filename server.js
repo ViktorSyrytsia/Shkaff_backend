@@ -1,13 +1,12 @@
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const schema = require('../schema/schema');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from 'express';
+import {graphqlHTTP} from 'express-graphql';
+import mongoose from 'mongoose';
+import cors from 'cors';
 
 const app = express();
-const PORT = 3005;
+const PORT = process.env.PORT || 5000;
 
-mongoose.connect('mongodb+srv://dmytro_didukh:123321@cluster0-bluhz.azure.mongodb.net/graphQL?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGO_URL,
         { useUnifiedTopology: true }
 );
 
