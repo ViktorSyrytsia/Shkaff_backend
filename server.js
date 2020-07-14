@@ -1,5 +1,5 @@
 import express from 'express';
-import {graphqlHTTP} from 'express-graphql';
+import { graphqlHTTP } from 'express-graphql';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
@@ -8,8 +8,7 @@ import schema from "./schema/schema";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URL,
-        { useUnifiedTopology: true }
+mongoose.connect('mongodb + srv://ViktorSyrytsia:ghjcnjgbplf33@graphtutorcluster.fjono.mongodb.net/Shkaff_DB?retryWrites=true&w=majority', { useUnifiedTopology: true }
 );
 
 app.use(cors())
