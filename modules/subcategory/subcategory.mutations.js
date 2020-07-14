@@ -1,24 +1,24 @@
 const graphql = require('graphql');
 
-const CategoryType = require('./category.graphql');
-const Category = require('../../models/category');
+const SubcategoryType = require('./subcategory.graphql');
+const {Subcategory} = require('../../models');
 
 
-const { GraphQLNonNull, GraphQLString } = graphql;
+const { GraphQLNonNull, GraphQLString, GraphQLID } = graphql;
 
 module.exports = {
-        setCategory: {
-                type: CategoryType,
+        setSubcategory: {
+                type: SubcategoryType,
                 args: {
                         name: { type: new GraphQLNonNull(GraphQLString) },
-                        image: { type: new GraphQLNonNull(GraphQLString) }
+                        categoryId: {type: GraphQLID}
                 },
-                resolve(parent, { name, image }) {
-                        const category = new Category({
+                resolve(parent, { name, categoryId }) {
+                        const subcategory = new Subcategory({
                                 name,
-                                image
+                                categoryId
                         });
-                        return category.save()
+                        return subcategory.save()
                 }
         },
 }
