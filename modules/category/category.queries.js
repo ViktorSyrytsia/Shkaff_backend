@@ -1,8 +1,7 @@
 const graphql = require('graphql');
 
 const CategoryType = require('./category.graphql');
-const Category = require('../../models/category');
-
+const {Category} = require('../../models');
 
 const { GraphQLID, GraphQLList } = graphql;
 

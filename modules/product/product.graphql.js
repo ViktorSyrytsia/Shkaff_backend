@@ -1,8 +1,7 @@
 const graphql = require('graphql');
 
 
-const Subcategory = require('../../models/subcategory');
-const Category = require('../../models/category');
+const {Subcategory, Category} = require('../../models');
 const CategoryType = require('../category/category.graphql');
 const SubcategoryType = require('../subcategory/subcategory.graphql');
 const ImageSetType = require('../imageSet/imageSet.graphql');
