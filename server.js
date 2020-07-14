@@ -3,6 +3,8 @@ import {graphqlHTTP} from 'express-graphql';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import schema from "./schema/schema";
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
