@@ -9,4 +9,3 @@ const { GraphQLObjectType,
         GraphQLNonNull,
         GraphQLBoolean } = graphql;
 
-
