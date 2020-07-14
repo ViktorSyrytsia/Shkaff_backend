@@ -7,12 +7,12 @@ const { GraphQLID, GraphQLList } = graphql;
 
 module.exports = {
         getSubcategory: {
-                type: SubategoryType,
+                type: SubcategoryType,
                 args: { id: { type: GraphQLID } },
-                resolve: (parent, args) => Subcategory.findById(args.id)
+                resolve: (parent, args) => Category.findById(args.id)
         },
         getSubcategories: {
-                type: new GraphQLList(SubcategoryType),
-                resolve: () => Subcategory.find({}),
+                type: new GraphQLList(CategoryType),
+                resolve: () => Category.find({}),
         },
 }
