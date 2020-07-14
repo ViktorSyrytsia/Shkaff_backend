@@ -1,8 +1,9 @@
 import graphql from 'graphql';
 
-import {Subcategory, Category, ImageSet} from '../../models';
+import {Subcategory, Category} from '../../models';
 import CategoryType from '../category/category.graphql';
 import SubcategoryType from '../subcategory/subcategory.graphql';
+import ImageSetType from '../imageSet/imageSet.graphql';
 
 const {
     GraphQLObjectType,
@@ -39,7 +40,7 @@ const ProductType = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLInt)
         },
         images: {
-            type: new GraphQLList(ImageSet)
+            type: new GraphQLList(ImageSetType)
         },
         rating: {
             type: new GraphQLNonNull(GraphQLInt)
