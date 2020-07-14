@@ -20,4 +20,4 @@ const purchaseSchema = new Schema({
     }
 });
 
-module.exports = model('Purchase', purchaseSchema);
+export default model('Purchase', purchaseSchema);

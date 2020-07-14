@@ -5,4 +5,4 @@ const subcategorySchema = new Schema({
     categoryId: {type: Schema.Types.ObjectID, required: true}
 });
 
-module.exports = model('Subcategory', subcategorySchema);
+export default model('Subcategory', subcategorySchema);
