@@ -5,4 +5,4 @@ const categorySchema = new Schema({
     image: {type: String, required: true}
 });
 
-module.exports = model('Category', categorySchema);
+export default model('Category', categorySchema);

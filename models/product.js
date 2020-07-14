@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const itemSchema = new Schema({
+const productSchema = new Schema({
         name: { type: String, required: true },
         category: { type: String, required: true, ref: 'Category' },
         subcategory: { type: String, required: true, ref: 'Subcategory' },
@@ -31,4 +31,4 @@ const itemSchema = new Schema({
         rating: Number
 });
 
-module.exports = model('Item', itemSchema);
+export default model('Product', productSchema);
