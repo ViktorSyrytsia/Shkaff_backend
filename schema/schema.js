@@ -2,8 +2,8 @@ const graphql = require('graphql');
 
 const CategoryQueries = require('../modules/category/category.queries');
 const CategoryMutations = require('../modules/category/category.mutations');
-const SubcategoryQueries = require('../modules/category/category.queries');
-const SubcategoryMutations = require('../modules/category/category.mutations');
+const SubcategoryQueries = require('../modules/subcategory/subcategory.queries');
+const SubcategoryMutations = require('../modules/subcategory/subcategory.mutations');
 
 const { GraphQLObjectType, GraphQLSchema } = graphql;
 
@@ -12,6 +12,9 @@ const Mutation = new GraphQLObjectType({
         fields: {
                 setCategory: {
                         ...CategoryMutations.setCategory
+                },
+                setSubcategory: {
+                        ...SubcategoryMutations.setSubcategory
                 }
         }
 })
