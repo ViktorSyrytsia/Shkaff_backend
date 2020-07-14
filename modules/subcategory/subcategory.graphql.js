@@ -1,7 +1,7 @@
-import graphql from 'graphql';
+const graphql = require('graphql');
 
-import {Category} from '../../models';
-import CategoryType from '../category/category.graphql';
+const Category = require('../../models/category');
+const CategoryType = require('../category/category.graphql');
 
 const {
     GraphQLObjectType,
@@ -21,4 +21,4 @@ const SubcategoryType = new GraphQLObjectType({
     }),
 })
 
-export default SubcategoryType;
+module.exports = SubcategoryType;

@@ -1,7 +1,7 @@
-import graphql from 'graphql';
+const graphql = require('graphql');
 
-import CategoryQueries from "../modules/category/category.queries";
-import CategoryMutations from "../modules/category/category.mutations";
+const CategoryQueries = require('../modules/category/category.queries');
+const CategoryMutations = require('../modules/category/category.mutations');
 
 const {GraphQLObjectType, GraphQLSchema} = graphql;
 
@@ -26,7 +26,7 @@ const Query = new GraphQLObjectType({
     }
 });
 
-export default new GraphQLSchema({
+module.exports = new GraphQLSchema({
     query: Query,
     mutation: Mutation,
 })

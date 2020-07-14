@@ -1,4 +1,6 @@
-import {Schema, model} from 'mongoose';
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
     link: String
@@ -8,4 +10,4 @@ const imageSetSchema = new Schema({
     images: [imageSchema]
 });
 
-export default model('ImageSet', imageSetSchema);
+module.exports =  mongoose.model('ImageSet', imageSetSchema);

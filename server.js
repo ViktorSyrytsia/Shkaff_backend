@@ -1,9 +1,9 @@
-import express from 'express';
-import {graphqlHTTP} from 'express-graphql';
-import mongoose from 'mongoose';
-import cors from 'cors';
+const express = require('express');
+const {graphqlHTTP} = require('express-graphql');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-import schema from "./schema/schema";
+const schema = require('./schema/schema');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
