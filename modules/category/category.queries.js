@@ -1,14 +1,15 @@
-import graphql from 'graphql';
+const graphql = require('graphql');
 
-import CategoryType from './category.graphql';
-import {Category} from '../../models';
+const CategoryType = require('./category.graphql');
+const Category = require('../../models/category');
 
-const {GraphQLID, GraphQLList} = graphql;
 
-export default {
+const { GraphQLID, GraphQLList } = graphql;
+
+module.exports = {
     getCategory: {
         type: CategoryType,
-        args: {id: {type: GraphQLID}},
+        args: { id: { type: GraphQLID } },
         resolve: (parent, args) => Category.findById(args.id)
     },
     getCategories: {

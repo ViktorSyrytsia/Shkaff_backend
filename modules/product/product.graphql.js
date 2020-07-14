@@ -1,9 +1,12 @@
-import graphql from 'graphql';
+const graphql = require('graphql');
 
-import {Subcategory, Category} from '../../models';
-import CategoryType from '../category/category.graphql';
-import SubcategoryType from '../subcategory/subcategory.graphql';
-import ImageSetType from '../imageSet/imageSet.graphql';
+
+const Subcategory = require('../../models/subcategory');
+const Category = require('../../models/category');
+const CategoryType = require('../category/category.graphql');
+const SubcategoryType = require('../subcategory/subcategory.graphql');
+const ImageSetType = require('../imageSet/imageSet.graphql');
+
 
 const {
     GraphQLObjectType,
@@ -16,8 +19,8 @@ const {
 const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
-        id: {type: GraphQLString},
-        name: {type: new GraphQLNonNull(GraphQLString)},
+        id: { type: GraphQLString },
+        name: { type: new GraphQLNonNull(GraphQLString) },
         category: {
             type: CategoryType,
             resolve: (parent) => Category.findById(parent.categoryId)
@@ -27,11 +30,11 @@ const ProductType = new GraphQLObjectType({
             resolve: (parent) => Subcategory.findById(parent.subcategoryId)
         },
         size: {
-            s: {type: new GraphQLNonNull(GraphQLInt)},
-            m: {type: new GraphQLNonNull(GraphQLInt)},
-            l: {type: new GraphQLNonNull(GraphQLInt)},
-            xl: {type: new GraphQLNonNull(GraphQLInt)},
-            xxl: {type: new GraphQLNonNull(GraphQLInt)},
+            s: { type: new GraphQLNonNull(GraphQLInt) },
+            m: { type: new GraphQLNonNull(GraphQLInt) },
+            l: { type: new GraphQLNonNull(GraphQLInt) },
+            xl: { type: new GraphQLNonNull(GraphQLInt) },
+            xxl: { type: new GraphQLNonNull(GraphQLInt) },
         },
         description: {
             type: new GraphQLNonNull(GraphQLString)
@@ -48,4 +51,4 @@ const ProductType = new GraphQLObjectType({
     }),
 });
 
-export default ProductType;
+module.exports = ProductType;
