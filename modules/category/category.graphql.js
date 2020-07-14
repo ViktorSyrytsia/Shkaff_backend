@@ -1,17 +1,13 @@
 import graphql from 'graphql';
-import Category from '../../models/category';
 
-const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLBoolean } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLNonNull } = graphql;
 
-const Category = new GraphQLObjectType({
+const CategoryType = new GraphQLObjectType({
         name: 'Category',
         fields: () => ({
                 name: { type: new GraphQLNonNull(GraphQLString) },
                 image: { type: new GraphQLNonNull(GraphQLString) },
-                resolve(parent, args) {
-
-                }
         }),
 });
 
-export default Category;
+export default CategoryType;
