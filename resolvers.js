@@ -1,11 +1,14 @@
 import { categoryQuery, categoryMutation } from './modules/category/category.resolver';
+import { subcategoryQuery, subcategoryMutation } from './modules/subcategory/subcategory.resolver';
 
 const resolvers = {
         Query: {
-                ...categoryQuery
+                ...categoryQuery,
+                ...subcategoryQuery
         },
         Mutation: {
-                ...categoryMutation
+                ...categoryMutation,
+                ...subcategoryMutation,
         }
 };
 

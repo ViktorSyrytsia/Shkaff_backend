@@ -1,7 +1,5 @@
 import {ApolloServer} from 'apollo-server';
-import {graphqlHTTP} from 'express-graphql';
 import mongoose from 'mongoose';
-import cors from 'cors';
 import dotenv from 'dotenv'
 
 import resolvers from './resolvers';
@@ -21,11 +19,6 @@ mongoose.connect(process.env.MONGO_URL, {
         useNewUrlParser: true
     }
 );
-
-/*server.use(cors())
-server.use('/graphql', graphqlHTTP({
-    graphiql: true
-}));*/
 
 const dbConnection = mongoose.connection;
 dbConnection.on('error', err => console.log(`Connection error: ${err}`));

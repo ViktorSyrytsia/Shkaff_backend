@@ -1,4 +1,4 @@
-import {
+/*import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLNonNull,
@@ -19,4 +19,4 @@ const SubcategoryType = new GraphQLObjectType({
     }),
 })
 
-export default SubcategoryType;
+export default SubcategoryType;*/

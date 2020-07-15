@@ -1,11 +1,15 @@
 #import "modules/category/types.graphql"
+#import "modules/subcategory/types.graphql"
 
 type Query {
-    getCategories: [Category!]!
     getCategory(id: ID!): Category
+    getCategories: [Category!]!
+    getSubcategory(id: ID!): Subcategory
+    getSubcategories: [Subcategory!]!
 }
 
 type Mutation {
-    addCategory(name: String!, image: String): Category
+    addCategory(category: CategoryInput!): Category
+    addSubcategory(subcategory: SubcategoryInput!): Subcategory
 }
 
