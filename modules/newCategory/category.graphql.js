@@ -5,4 +5,4 @@ const CategoryType = `
     images: String
 }
 `;
-module.exports = CategoryType;
+export default CategoryType;

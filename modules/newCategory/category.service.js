@@ -1,4 +1,4 @@
-const Category = require('../../models/category');
+import Category from '../../models/category';
 
 class CategoryService {
         getAllCategories() {
@@ -22,4 +22,4 @@ class CategoryService {
                 return Category.findByIdAndDelete(id);
         }
 }
-module.exports = new CategoryService();
+export default new CategoryService();

@@ -1,4 +1,4 @@
-const categoryService = require('./category.service');
+import categoryService from './category.service';
 
 const categoryQuery = {
         getAllCategories: () => categoryService.getAllCategories(),
@@ -13,4 +13,4 @@ const categoryMutation = {
         updateCategory: (parent, args) => categoryService.updateCategory(args.id, args.category),
 };
 
-module.exports = { categoryQuery, categoryMutation };
+export default { categoryQuery, categoryMutation };
