@@ -1,19 +1,17 @@
-const graphql = require('graphql');
-
-const {Category} = require('../../models');
-const CategoryType = require('../category/category.graphql');
-
-const {
+import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLNonNull,
-} = graphql;
+} from 'graphql';
+
+import CategoryType from '../category/category.graphql';
+import {Category} from '../../models';
 
 const SubcategoryType = new GraphQLObjectType({
     name: 'Subcategory',
     fields: () => ({
-        id: { type: GraphQLString },
-        name: { type: new GraphQLNonNull(GraphQLString) },
+        id: {type: GraphQLString},
+        name: {type: new GraphQLNonNull(GraphQLString)},
         category: {
             type: CategoryType,
             resolve: (parent) => Category.findById(parent.categoryId)
@@ -21,4 +19,4 @@ const SubcategoryType = new GraphQLObjectType({
     }),
 })
 
-module.exports = SubcategoryType;
+export default SubcategoryType;

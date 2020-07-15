@@ -1,12 +1,9 @@
-const graphql = require('graphql');
+import { GraphQLNonNull, GraphQLString } from 'graphql';
 
-const CategoryType = require('./category.graphql');
-const {Category} = require('../../models');
+import CategoryType from './category.graphql';
+import {Category} from '../../models';
 
-
-const { GraphQLNonNull, GraphQLString } = graphql;
-
-module.exports = {
+export default {
     setCategory: {
         type: CategoryType,
         args: {
