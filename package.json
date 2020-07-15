@@ -1,11 +1,11 @@
 {
   "name": "shkaff_backend",
   "version": "1.0.0",
-  "description": "backend for skaff_sotre",
+  "description": "backend for shkaff_store",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "babel-watch server.js",
+    "dev": "babel-watch server.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.5",
+    "babel-watch": "^7.0.0",
     "nodemon": "^2.0.4"
   }
 }

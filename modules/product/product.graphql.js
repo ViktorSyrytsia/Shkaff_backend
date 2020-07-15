@@ -1,19 +1,15 @@
-const graphql = require('graphql');
-
-
-const {Subcategory, Category} = require('../../models');
-const CategoryType = require('../category/category.graphql');
-const SubcategoryType = require('../subcategory/subcategory.graphql');
-const ImageSetType = require('../imageSet/imageSet.graphql');
-
-
-const {
+import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLInt,
     GraphQLList,
     GraphQLNonNull,
-} = graphql;
+} from 'graphql';
+
+import {Subcategory, Category} from '../../models';
+import CategoryType from '../category/category.graphql';
+import SubcategoryType from '../subcategory/subcategory.graphql';
+import ImageSetType from '../imageSet/imageSet.graphql';
 
 const ProductType = new GraphQLObjectType({
     name: 'Product',
@@ -50,4 +46,4 @@ const ProductType = new GraphQLObjectType({
     }),
 });
 
-module.exports = ProductType;
+export default ProductType;

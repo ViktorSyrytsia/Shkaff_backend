@@ -1,6 +1,4 @@
-const graphql = require('graphql');
-
-const { GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLID } = graphql;
+import {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull} from 'graphql'
 
 const CategoryType = new GraphQLObjectType({
         name: 'Category',
@@ -11,4 +9,4 @@ const CategoryType = new GraphQLObjectType({
         }),
 });
 
-module.exports = CategoryType;
+export default CategoryType;

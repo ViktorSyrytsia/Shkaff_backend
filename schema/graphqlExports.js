@@ -1,6 +1,4 @@
-const CategoryQueries = require('../modules/category/category.queries');
-const CategoryMutations = require('../modules/category/category.mutations');
-const SubcategoryQueries = require('../modules/subcategory/subcategory.queries');
-const SubcategoryMutations = require('../modules/subcategory/subcategory.mutations');
-
-exports.module = { CategoryQueries, CategoryMutations, SubcategoryQueries, SubcategoryMutations };
+export {default as CategoryQueries} from '../modules/category/category.queries';
+export {default as CategoryMutations} from '../modules/category/category.mutations';
+export {default as SubcategoryQueries} from '../modules/subcategory/subcategory.queries';
+export {default as SubcategoryMutations} from '../modules/subcategory/subcategory.mutations';

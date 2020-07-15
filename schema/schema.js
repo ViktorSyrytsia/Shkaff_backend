@@ -1,9 +1,6 @@
-const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLSchema } = graphql;
+import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
-const grapqlExports = require('./graphqlExports');
-const { CategoryQueries, CategoryMutations, SubcategoryQueries, SubcategoryMutations } = grapqlExports.module;
-
+import { CategoryQueries, CategoryMutations, SubcategoryQueries, SubcategoryMutations } from './graphqlExports';
 
 const Mutation = new GraphQLObjectType({
         name: 'Mutation',
@@ -35,7 +32,7 @@ const Query = new GraphQLObjectType({
         }
 });
 
-module.exports = new GraphQLSchema({
+export default new GraphQLSchema({
         query: Query,
         mutation: Mutation,
 })

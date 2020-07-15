@@ -1,13 +1,5 @@
-const Category = require('./category');
-const Subcategory = require('./subcategory');
-const Product = require('./product');
-const Purchase = require('./purchase');
-const ImageSet = require('./imageSet');
-
-module.exports = {
-    Category,
-    Subcategory,
-    Product,
-    Purchase,
-    ImageSet,
-}
+export {default as Category} from './category';
+export {default as Subcategory} from './subcategory';
+export {default as ImageSet} from './category';
+export {default as Product} from './product';
+export {default as Purchase} from './purchase';

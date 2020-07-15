@@ -1,6 +1,4 @@
-const graphql = require('graphql');
-
-const { GraphQLObjectType, GraphQLString, GraphQLNonNull } = graphql;
+import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from 'graphql';
 
 const ImageSetType = new GraphQLObjectType({
         name: 'ImageSet',
@@ -10,4 +8,4 @@ const ImageSetType = new GraphQLObjectType({
         }),
 });
 
-module.exports = ImageSetType;
+export default ImageSetType;

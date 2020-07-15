@@ -1,11 +1,9 @@
-const graphql = require('graphql');
-
-const {
+import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLNonNull,
     GraphQLInt
-} = graphql;
+} from 'graphql';
 
 const PurchaseType = new GraphQLObjectType({
     name: 'Purchase',
@@ -31,4 +29,4 @@ const PurchaseType = new GraphQLObjectType({
     }),
 })
 
-module.exports = PurchaseType;
+export default PurchaseType;

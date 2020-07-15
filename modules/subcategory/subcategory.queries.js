@@ -1,11 +1,9 @@
-const graphql = require('graphql');
+import { GraphQLID, GraphQLList } from 'graphql';
 
-const SubcategoryType = require('./subcategory.graphql');
-const { Subcategory } = require('../../models');
+import SubcategoryType from './subcategory.graphql';
+import {Subcategory} from '../../models';
 
-const { GraphQLID, GraphQLList } = graphql;
-
-module.exports = {
+export default {
         getSubcategory: {
                 type: SubcategoryType,
                 args: { id: { type: GraphQLID } },
