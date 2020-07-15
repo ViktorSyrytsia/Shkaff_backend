@@ -1,0 +1,11 @@
+#import "modules/category/types.graphql"
+
+type Query {
+    getCategories: [Category!]!
+    getCategory(id: ID!): Category
+}
+
+type Mutation {
+    addCategory(name: String!, image: String): Category
+}
+

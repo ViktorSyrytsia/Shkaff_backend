@@ -1,4 +1,4 @@
-import { categoryQuery, categoryMutation } from './modules/newCategory/category.resolver';
+import { categoryQuery, categoryMutation } from './modules/category/category.resolver';
 
 const resolvers = {
         Query: {
