@@ -2,10 +2,10 @@ type Category {
   _id: ID!
   name: String!
   image: String
-  subcategories: [Subcategory]
+  subcategories: [Subcategory!]!
 }
 
 input CategoryInput {
   name: String!
-  image: String!
+  image: String
 }

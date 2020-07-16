@@ -7,7 +7,8 @@ const categoryQuery = {
 
 const categoryMutation = {
         addCategory: (parent, args) => {
-                categoryService.addCategory(args);
+                console.log(parent, args)
+                categoryService.addCategory(args.category);
         }
 };
 

@@ -11,6 +11,7 @@ class CategoryService {
 
         addCategory(data) {
                 const category = new Category(data);
+                console.log(category)
                 return category.save();
         }
 }

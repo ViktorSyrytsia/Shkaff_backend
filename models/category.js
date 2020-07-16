@@ -1,13 +1,9 @@
-import {Schema, model} from'mongoose';
+import {Schema, model} from 'mongoose';
 
 const categorySchema = new Schema({
     name: {type: String, required: true},
     image: {type: String, required: true},
-    subcategories: [
-        {
-            name: String
-        },
-    ],
+    subcategories: {type: Schema.Types.ObjectID, ref: 'Subcategory'},
 });
 
 export default model('Category', categorySchema);
