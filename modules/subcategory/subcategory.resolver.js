@@ -7,7 +7,8 @@ const subcategoryQuery = {
 
 const subcategoryMutation = {
         addSubcategory: (parent, args) => {
-                subcategoryService.addSubcategory(args);
+                console.log(parent, args)
+                subcategoryService.addSubcategory(args.subcategory);
         }
 };
 
