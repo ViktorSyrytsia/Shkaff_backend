@@ -1,12 +1,11 @@
 type Category {
-    _id: ID!
-    name: String!
-    image: String,
-    subcategories: [Subcategory]
+  _id: ID!
+  name: String!
+  image: String
+  subcategories: [Subcategory]
 }
 
 input CategoryInput {
-    name: String!
-    image: String!
+  name: String!
+  image: String!
 }
-
