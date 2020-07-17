@@ -7,9 +7,8 @@ import {
 } from 'graphql';
 
 import {Subcategory, Category} from '../../models';
-import CategoryType from '../category/category.graphql';
-import SubcategoryType from '../subcategory/subcategory.graphql';
-import ImageSetType from '../imageSet/imageSet.graphql';
+import {CategoryType, SubcategoryType} from '../types';
+import {ImageSetType, ImageSetInput} from '../common';
 
 const ProductType = new GraphQLObjectType({
     name: 'Product',

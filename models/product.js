@@ -2,24 +2,24 @@ import {Schema, model} from 'mongoose';
 
 const productSchema = new Schema({
     name: String,
-    category: {
+    categoryId: {
         type: Schema.Types.ObjectID,
         ref: 'Category'
     },
-    subcategory: {
+    subcategoryId: {
         type: Schema.Types.ObjectID,
         ref: 'Subcategory'
     },
     size: {
-        type: Schema.Types.ObjectID,
-        ref: 'Size'
+        s: String,
+        m: String,
+        l: String,
+        xl: String,
+        xll: String,
     },
     description: String,
     price: Number,
-    images: {
-        type: Schema.Types.ObjectID,
-        ref: 'ImageSet'
-    },
+    images: Array,
     rating: Number
 });
 

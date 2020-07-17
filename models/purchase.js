@@ -2,8 +2,10 @@ import { Schema, model } from 'mongoose';
 
 const purchaseSchema = new Schema({
     user: {
-        type: Schema.Types.ObjectID,
-        ref: 'User'
+        name: String,
+        surname: String,
+        email: String,
+        phone: String,
     },
     connectionMethod: String,
     deliveryMethod: {
