@@ -1,4 +1,4 @@
-import {GraphQLNonNull, GraphQLString} from 'graphql';
+import {GraphQLID, GraphQLNonNull, GraphQLString, GraphQLInt} from 'graphql';
 
 import CategoryType from './category.graphql';
 import {Category} from '../../models';
@@ -18,5 +18,25 @@ export default {
             });
             return category.save()
         }
+    },
+    updateCategory: {
+        type: CategoryType,
+        args: {
+            id: {type: GraphQLID},
+            name: {type: new GraphQLNonNull(GraphQLString)},
+            image: {type: new GraphQLNonNull(GraphQLString)}
+        },
+        resolve(parent, {id, name, image}) {
+            return Category.findByIdAndUpdate(
+                id,
+                {$set: {name, image}},
+                {new: true}
+            );
+        }
+    },
+    deleteCategory: {
+        type: CategoryType,
+        args: {id: {type: GraphQLID}},
+        resolve: (parent, args) => Category.findByIdAndRemove(args.id)
     },
 }

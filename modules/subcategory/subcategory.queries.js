@@ -7,7 +7,7 @@ export default {
         getSubcategory: {
                 type: SubcategoryType,
                 args: { id: { type: GraphQLID } },
-                resolve: (parent, args) => Category.findById(args.id)
+                resolve: (parent, args) => Subcategory.findById(args.id)
         },
         getSubcategories: {
                 type: new GraphQLList(SubcategoryType),

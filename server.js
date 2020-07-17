@@ -1,10 +1,11 @@
 import express from 'express';
 import {graphqlHTTP} from 'express-graphql';
-import mongoose from'mongoose';
-import cors from'cors';
-import dotenv from'dotenv'
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv'
 
-import schema from'./schema/schema';
+import schema from './schema/schema';
+
 dotenv.config();
 
 const app = express();
@@ -12,12 +13,12 @@ const PORT = process.env.PORT || 5001;
 
 mongoose.connect(process.env.MONGO_URL, {
         useUnifiedTopology: true,
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useFindAndModify: false
     }
 );
 
 app.use(cors())
-
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
