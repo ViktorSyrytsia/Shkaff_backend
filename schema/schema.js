@@ -1,4 +1,4 @@
-import {GraphQLObjectType, GraphQLSchema} from 'graphql';
+import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
 import {
     CategoryMutations,
@@ -66,10 +66,7 @@ const Query = new GraphQLObjectType({
         },
         getProduct: {
             ...ProductQueries.getProduct
-        },
-        getProducts: {
-            ...ProductQueries.getProducts
-        },
+        }
     }
 });
 
