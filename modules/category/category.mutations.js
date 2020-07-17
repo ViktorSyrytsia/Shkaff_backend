@@ -1,4 +1,4 @@
-import {GraphQLID, GraphQLNonNull, GraphQLString, GraphQLInt} from 'graphql';
+import {GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
 
 import CategoryType from './category.graphql';
 import {Category} from '../../models';
@@ -24,7 +24,7 @@ export default {
         args: {
             id: {type: GraphQLID},
             name: {type: new GraphQLNonNull(GraphQLString)},
-            image: {type: new GraphQLNonNull(GraphQLString)}
+            image: {type: GraphQLString},
         },
         resolve(parent, {id, name, image}) {
             return Category.findByIdAndUpdate(

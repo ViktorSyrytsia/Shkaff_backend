@@ -8,7 +8,7 @@ const CategoryType = new GraphQLObjectType({
         fields: () => ({
                 id: { type: GraphQLID },
                 name: { type: new GraphQLNonNull(GraphQLString) },
-                image: { type: new GraphQLNonNull(GraphQLString) },
+                image: { type: GraphQLString },
                 subcategories: {
                         type: new GraphQLList(SubcategoryType),
                         resolve: (parent) => Subcategory.find({categoryId: parent.id})
