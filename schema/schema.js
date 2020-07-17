@@ -1,6 +1,11 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
-import { CategoryQueries, CategoryMutations, SubcategoryQueries, SubcategoryMutations } from './graphqlExports';
+import {
+        CategoryQueries,
+        CategoryMutations,
+        SubcategoryQueries,
+        SubcategoryMutations
+} from './graphqlExports';
 
 const Mutation = new GraphQLObjectType({
         name: 'Mutation',
