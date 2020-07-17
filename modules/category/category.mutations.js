@@ -1,30 +1,42 @@
-import { GraphQLNonNull, GraphQLString } from 'graphql';
+import {GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
 
-<<<<<<< HEAD
-const CategoryType = require('./category.graphql');
-const { Category } = require('../../models');
-
-const { GraphQLNonNull, GraphQLString } = graphql;
-
-module.exports = {
-=======
 import CategoryType from './category.graphql';
 import {Category} from '../../models';
 
 export default {
->>>>>>> 23019bb8b76a16f9d4bac9da8fc5447f57214d33
     setCategory: {
         type: CategoryType,
         args: {
-            name: { type: new GraphQLNonNull(GraphQLString) },
-            image: { type: new GraphQLNonNull(GraphQLString) }
+            name: {type: new GraphQLNonNull(GraphQLString)},
+            image: {type: new GraphQLNonNull(GraphQLString)}
         },
-        resolve(parent, { name, image }) {
+        resolve(parent, {name, image, subcategories}) {
             const category = new Category({
                 name,
-                image
+                image,
+                subcategories
             });
             return category.save()
         }
+    },
+    updateCategory: {
+        type: CategoryType,
+        args: {
+            id: {type: GraphQLID},
+            name: {type: new GraphQLNonNull(GraphQLString)},
+            image: {type: GraphQLString},
+        },
+        resolve(parent, {id, name, image}) {
+            return Category.findByIdAndUpdate(
+                id,
+                {$set: {name, image}},
+                {new: true}
+            );
+        }
+    },
+    deleteCategory: {
+        type: CategoryType,
+        args: {id: {type: GraphQLID}},
+        resolve: (parent, args) => Category.findByIdAndRemove(args.id)
     },
 }

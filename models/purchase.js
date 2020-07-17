@@ -1,21 +1,21 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const purchaseSchema = new Schema({
     user: {
-        name: {type: String, required: true},
-        surname: {type: String, required: true},
-        email: {type: String, required: true},
-        phone: {type: String, required: true},
+        name: String,
+        surname: String,
+        email: String,
+        phone: String,
     },
     connectionMethod: String,
     deliveryMethod: {
-        method: {type: String, required: true},
+        method: String,
         city: String,
-        postOffice: Number,
+        postOffice: String,
         address: {
             street: String,
-            built: Number,
-            apartment: Number,
+            built: String,
+            apartment: String,
         }
     }
 });

@@ -1,21 +1,21 @@
 import {
     GraphQLObjectType,
     GraphQLString,
-    GraphQLInt,
     GraphQLList,
     GraphQLNonNull,
+    GraphQLID,
+    GraphQLFloat
 } from 'graphql';
 
-import {Subcategory, Category} from '../../models';
-import CategoryType from '../category/category.graphql';
-import SubcategoryType from '../subcategory/subcategory.graphql';
-import ImageSetType from '../imageSet/imageSet.graphql';
+import { Subcategory, Category } from '../../models';
+import { CategoryType, SubcategoryType } from '../types';
+import { ImageSetType, SizesType, RatingType } from '../common';
 
 const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
-        id: { type: GraphQLString },
-        name: { type: new GraphQLNonNull(GraphQLString) },
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type:GraphQLString },
         category: {
             type: CategoryType,
             resolve: (parent) => Category.findById(parent.categoryId)
@@ -24,24 +24,20 @@ const ProductType = new GraphQLObjectType({
             type: SubcategoryType,
             resolve: (parent) => Subcategory.findById(parent.subcategoryId)
         },
-        size: {
-            s: { type: new GraphQLNonNull(GraphQLInt) },
-            m: { type: new GraphQLNonNull(GraphQLInt) },
-            l: { type: new GraphQLNonNull(GraphQLInt) },
-            xl: { type: new GraphQLNonNull(GraphQLInt) },
-            xxl: { type: new GraphQLNonNull(GraphQLInt) },
+        sizes: {
+            type: new GraphQLNonNull(SizesType)
         },
         description: {
-            type: new GraphQLNonNull(GraphQLString)
+            type: GraphQLString
         },
         price: {
-            type: new GraphQLNonNull(GraphQLInt)
+            type: new GraphQLNonNull(GraphQLFloat)
         },
         images: {
             type: new GraphQLList(ImageSetType)
         },
         rating: {
-            type: new GraphQLNonNull(GraphQLInt)
+            type: new GraphQLList(RatingType)
         }
     }),
 });
