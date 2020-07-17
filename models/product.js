@@ -1,9 +1,9 @@
 import {Schema, model} from 'mongoose';
 
 const productSchema = new Schema({
-    name: {type: String, required: true},
-    category: {type: String, required: true, ref: 'Category'},
-    subcategory: {type: String, required: true, ref: 'Subcategory'},
+    name: String,
+    category: {type: String, ref: 'Category'},
+    subcategory: {type: String, ref: 'Subcategory'},
     size: {
         s: Number,
         m: Number,
@@ -11,22 +11,14 @@ const productSchema = new Schema({
         xl: Number,
         xxl: Number,
     },
-    description: {type: String, required: true},
-    price: {type: Number, required: true},
-    image: [
-        {type: String, required: true},
-        {
-            type: String,
-        },
-        {
-            type: String,
-        },
-        {
-            type: String,
-        },
-        {
-            type: String,
-        }
+    description: String,
+    price: Number,
+    images: [
+       String,
+       String,
+       String,
+       String,
+       String
     ],
     rating: Number
 });
