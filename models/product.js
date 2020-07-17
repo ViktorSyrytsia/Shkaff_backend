@@ -10,17 +10,17 @@ const productSchema = new Schema({
         type: Schema.Types.ObjectID,
         ref: 'Subcategory'
     },
-    size: {
+    sizes: {
         s: String,
         m: String,
         l: String,
         xl: String,
-        xll: String,
+        xxl: String,
     },
     description: String,
     price: Number,
     images: Array,
-    rating: Number
+    rating: Array
 });
 
 export default model('Product', productSchema);

@@ -2,7 +2,8 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLNonNull,
-    GraphQLID
+    GraphQLID,
+    GraphQLInputObjectType
 } from 'graphql';
 
 export const ImageSetType = new GraphQLObjectType({
@@ -13,7 +14,7 @@ export const ImageSetType = new GraphQLObjectType({
     }),
 });
 
-export const ImageSetInput = new GraphQLObjectType({
+export const ImageSetInput = new GraphQLInputObjectType({
     name: 'ImageSetInput',
     fields: () => ({
         link: { type: new GraphQLNonNull(GraphQLString) },

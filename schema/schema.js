@@ -3,12 +3,14 @@ import {GraphQLObjectType, GraphQLSchema} from 'graphql';
 import {
     CategoryMutations,
     SubcategoryMutations,
-    PurchaseMutation
+    PurchaseMutation,
+    ProductMutation
 } from '../modules/mutations';
 import {
     CategoryQueries,
     SubcategoryQueries,
-    PurchaseQueries
+    PurchaseQueries,
+    ProductQueries
 } from '../modules/queries';
 
 const Mutation = new GraphQLObjectType({
@@ -34,7 +36,10 @@ const Mutation = new GraphQLObjectType({
         },
         addPurchase: {
             ...PurchaseMutation.addPurchase
-        }
+        },
+        addProduct: {
+            ...ProductMutation.addProduct
+        },
     }
 })
 
@@ -58,7 +63,13 @@ const Query = new GraphQLObjectType({
         },
         getPurchases: {
             ...PurchaseQueries.getPurchases
-        }
+        },
+        getProduct: {
+            ...ProductQueries.getProduct
+        },
+        getProducts: {
+            ...ProductQueries.getProducts
+        },
     }
 });
 

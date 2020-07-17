@@ -1,7 +1,6 @@
 import {
     GraphQLObjectType,
     GraphQLString,
-    GraphQLInt,
     GraphQLList,
     GraphQLNonNull,
     GraphQLID,
@@ -10,7 +9,7 @@ import {
 
 import { Subcategory, Category } from '../../models';
 import { CategoryType, SubcategoryType } from '../types';
-import { ImageSetType, ImageSetInput, SizeType, SizeInput, RatingType, RatingInput } from '../common';
+import { ImageSetType, SizesType, RatingType } from '../common';
 
 const ProductType = new GraphQLObjectType({
     name: 'Product',
@@ -25,8 +24,8 @@ const ProductType = new GraphQLObjectType({
             type: SubcategoryType,
             resolve: (parent) => Subcategory.findById(parent.subcategoryId)
         },
-        size: {
-            type: new GraphQLNonNull(SizeType)
+        sizes: {
+            type: new GraphQLNonNull(SizesType)
         },
         description: {
             type: new GraphQLNonNull(GraphQLString)

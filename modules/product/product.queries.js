@@ -5,7 +5,7 @@ import { Product } from '../../models';
 
 export default {
         getProduct: {
-                type: PurchaseType,
+                type: ProductType,
                 args: { id: { type: GraphQLID } },
                 resolve: (parent, args) => Product.findById(args.id)
         }
