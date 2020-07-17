@@ -1,11 +1,7 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
-import {
-        CategoryQueries,
-        CategoryMutations,
-        SubcategoryQueries,
-        SubcategoryMutations
-} from './graphqlExports';
+import {CategoryMutations, SubcategoryMutations} from '../modules/mutations';
+import {CategoryQueries, SubcategoryQueries} from '../modules/queries';
 
 const Mutation = new GraphQLObjectType({
         name: 'Mutation',
@@ -22,16 +18,16 @@ const Mutation = new GraphQLObjectType({
 const Query = new GraphQLObjectType({
         name: 'Query',
         fields: {
-                category: {
+                getCategory: {
                         ...CategoryQueries.getCategory
                 },
-                categories: {
+                getCategories: {
                         ...CategoryQueries.getCategories
                 },
-                subcategory: {
+                getSubcategory: {
                         ...SubcategoryQueries.getSubcategory
                 },
-                subcategories: {
+                getSubcategories: {
                         ...SubcategoryQueries.getSubcategories
                 }
         }
