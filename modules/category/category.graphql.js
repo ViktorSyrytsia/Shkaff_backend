@@ -1,7 +1,7 @@
-import {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList} from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList } from 'graphql';
 
-import {SubcategoryType} from "../types";
-import {Subcategory} from '../../models'
+import { SubcategoryType } from "../types";
+import { Subcategory } from '../../models'
 
 const CategoryType = new GraphQLObjectType({
         name: 'Category',
@@ -11,7 +11,7 @@ const CategoryType = new GraphQLObjectType({
                 image: { type: GraphQLString },
                 subcategories: {
                         type: new GraphQLList(SubcategoryType),
-                        resolve: (parent) => Subcategory.find({categoryId: parent.id})
+                        resolve: (parent) => Subcategory.find({ categoryId: parent.id })
                 }
         }),
 });
