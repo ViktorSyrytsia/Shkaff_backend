@@ -19,10 +19,10 @@ const Mutation = new GraphQLObjectType({
                         ...SubcategoryMutations.setSubcategory
                 },
                 deleteSubcategory: {
-                        ...SubcategoryMutations.setSubcategory
+                        ...SubcategoryMutations.deleteSubcategory
                 },
                 updateSubcategory: {
-                        ...SubcategoryMutations.setSubcategory
+                        ...SubcategoryMutations.updateSubcategory
                 }
 
                 /*   addPurchase: {

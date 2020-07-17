@@ -21,8 +21,8 @@ export default {
         deleteSubcategory: {
                 type: SubcategoryType,
                 args: { id: { type: GraphQLID } },
-                resolve(parent, args) {
-                        return Subcategory.findByIdAndRemove(args.id);
+                resolve(parent, { id }) {
+                        return Subcategory.findByIdAndRemove(id);
                 }
         },
         updateSubcategory: {
@@ -30,8 +30,9 @@ export default {
                 args: {
                         id: { type: GraphQLID },
                         name: { type: new GraphQLNonNull(GraphQLString) },
+
                 },
-                resolve(parent, { id, names }) {
+                resolve(parent, { id, name }) {
                         return Subcategory.findByIdAndUpdate(
                                 id,
                                 { $set: { name } },
