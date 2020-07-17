@@ -1,7 +1,8 @@
-import { GraphQLNonNull, GraphQLString } from 'graphql';
+import { GraphQLNonNull, GraphQLString, GraphQLInt } from 'graphql';
 
 import PurchaseType from './purchase.graphql';
 import { Purchase } from '../../models';
+import purchase from '../../models/purchase';
 
 export default {
         addPurchase: {
@@ -25,20 +26,24 @@ export default {
                                 }
                         },
                         resolve(parent, { user: { name, surname, email, phone }, connectionMethod, deliveryMethod: { method, city, postOffice, address: { street, built, apartment } } }) {
-                                const category = new Purchase({
-                                        name,
-                                        surname,
-                                        email,
-                                        phone,
+                                const purchase = new Purchase({
+                                        user: {
+                                                name,
+                                                surname,
+                                                email,
+                                                phone
+                                        },
                                         connectionMethod,
-                                        method,
-                                        city,
-                                        postOffice,
-                                        street,
-                                        built,
-                                        apartment
+                                        deliveryMethod: {
+                                                method,
+                                                city,
+                                                postOffice,
+                                                street,
+                                                built,
+                                                apartment
+                                        }
                                 });
-                                return category.save()
+                                return purchase.save()
                         }
                 },
         }
