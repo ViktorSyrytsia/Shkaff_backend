@@ -2,7 +2,7 @@ import { GraphQLNonNull, GraphQLString, GraphQLInt } from 'graphql';
 
 import PurchaseType from './purchase.graphql';
 import { Purchase } from '../../models';
-import purchase from '../../models/purchase';
+
 
 export default {
         addPurchase: {

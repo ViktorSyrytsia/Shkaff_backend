@@ -12,9 +12,13 @@ const Mutation = new GraphQLObjectType({
                 setSubcategory: {
                         ...SubcategoryMutations.setSubcategory
                 },
-                addPurchase: {
-                        ...PurchaseMutation.addPurchase
+                deleteSubcategory: {
+                        ...SubcategoryMutations.setSubcategory
+                },
+                updateSubcategory: {
+                        ...SubcategoryMutations.setSubcategory
                 }
+
         }
 })
 
@@ -33,12 +37,7 @@ const Query = new GraphQLObjectType({
                 getSubcategories: {
                         ...SubcategoryQueries.getSubcategories
                 },
-                getPurchase: {
-                        ...PurchaseQueries.getPurchase
-                },
-                getPurchases: {
-                        ...PurchaseQueries.getPurchases
-                }
+
         }
 });
 
