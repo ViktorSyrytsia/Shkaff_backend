@@ -11,16 +11,16 @@ const productSchema = new Schema({
         ref: 'Subcategory'
     },
     sizes: {
-        s: String,
-        m: String,
-        l: String,
-        xl: String,
-        xxl: String,
+        s: Number,
+        m: Number,
+        l: Number,
+        xl: Number,
+        xxl: Number,
     },
     description: String,
     price: Number,
-    images: Array,
-    rating: Array
+    images: [Object],
+    rating: [Object]
 });
 
 export default model('Product', productSchema);

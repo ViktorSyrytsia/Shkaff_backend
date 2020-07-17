@@ -3,31 +3,31 @@ import {
     GraphQLString,
     GraphQLList,
     GraphQLID,
-    GraphQLFloat
+    GraphQLFloat, GraphQLInt
 } from 'graphql';
 
 import ProductType from './product.graphql';
-import { ImageSetInput, RatingInput, SizesInput } from '../common';
-import { Product } from '../../models';
+import {ImageSetInput, RatingInput, SizesInput} from '../common';
+import {Product} from '../../models';
 
 export default {
     addProduct: {
         type: ProductType,
         args: {
-            name: { type: new GraphQLNonNull(GraphQLString) },
-            categoryId: { type: new GraphQLNonNull(GraphQLID) },
-            subcategoryId: { type: new GraphQLNonNull(GraphQLID) },
-            sizes: { type: SizesInput },
-            description: { type: GraphQLString },
-            price: { type: new GraphQLNonNull(GraphQLFloat) },
-            images: { type: new GraphQLList(ImageSetInput) },
-            rating: { type: new GraphQLList(RatingInput) }
+            name: {type: new GraphQLNonNull(GraphQLString)},
+            categoryId: {type: new GraphQLNonNull(GraphQLID)},
+            subcategoryId: {type: new GraphQLNonNull(GraphQLID)},
+            sizes: {type: SizesInput},
+            description: {type: GraphQLString},
+            price: {type: new GraphQLNonNull(GraphQLFloat)},
+            images: {type: new GraphQLList(ImageSetInput)},
+            rating: {type: new GraphQLList(RatingInput)}
         },
         resolve(parent, {
             name,
             categoryId,
             subcategoryId,
-            sizes: { s, m, l, xl, xxl },
+            sizes: {s, m, l, xl, xxl},
             description,
             price,
             images,
@@ -55,22 +55,22 @@ export default {
     updateProduct: {
         type: ProductType,
         args: {
-            id: { type: new GraphQLNonNull(GraphQLID) },
-            name: { type: new GraphQLNonNull(GraphQLString) },
-            categoryId: { type: new GraphQLNonNull(GraphQLID) },
-            subcategoryId: { type: new GraphQLNonNull(GraphQLID) },
-            sizes: { type: SizesInput },
-            description: { type: GraphQLString },
-            price: { type: new GraphQLNonNull(GraphQLFloat) },
-            images: { type: new GraphQLList(ImageSetInput) },
-            rating: { type: new GraphQLList(RatingInput) }
+            id: {type: new GraphQLNonNull(GraphQLID)},
+            name: {type: new GraphQLNonNull(GraphQLString)},
+            categoryId: {type: new GraphQLNonNull(GraphQLID)},
+            subcategoryId: {type: new GraphQLNonNull(GraphQLID)},
+            sizes: {type: SizesInput},
+            description: {type: GraphQLString},
+            price: {type: new GraphQLNonNull(GraphQLFloat)},
+            images: {type: new GraphQLList(ImageSetInput)},
+            rating: {type: new GraphQLList(RatingInput)}
         },
         resolve(parent, {
             id,
             name,
             categoryId,
             subcategoryId,
-            sizes: { s, m, l, xl, xxl },
+            sizes: {s, m, l, xl, xxl},
             description,
             price,
             images,
@@ -78,8 +78,36 @@ export default {
         }) {
             return Product.findByIdAndUpdate(
                 id,
-                { $set: { name, categoryId, subcategoryId, sizes: { s, m, l, xl, xxl }, description, price, images, rating } },
-                { new: true }
+                {
+                    $set: {
+                        name,
+                        categoryId,
+                        subcategoryId,
+                        sizes: {s, m, l, xl, xxl},
+                        description,
+                        price,
+                        images,
+                        rating
+                    }
+                },
+                {new: true}
+            );
+        }
+    },
+    updateProductRating: {
+        type: ProductType,
+        args: {
+            id: {type: new GraphQLNonNull(GraphQLID)},
+            rate: {type: GraphQLInt}
+        },
+        resolve(parent, {
+            id,
+            rate
+        }) {
+            return Product.findOneAndUpdate(
+                {_id: id},
+                {$push: {rating: {value: rate}}},
+                {returnOriginal: false}
             );
         }
     },

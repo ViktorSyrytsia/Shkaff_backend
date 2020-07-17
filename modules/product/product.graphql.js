@@ -15,7 +15,7 @@ const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
         id: { type: new GraphQLNonNull(GraphQLID) },
-        name: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type:GraphQLString },
         category: {
             type: CategoryType,
             resolve: (parent) => Category.findById(parent.categoryId)
