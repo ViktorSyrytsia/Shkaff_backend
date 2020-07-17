@@ -3,19 +3,21 @@ import {
     GraphQLString,
     GraphQLNonNull,
     GraphQLID,
-
 } from 'graphql';
 
-import user from './user.graphql';
-import deliveryMethod from './deliveryMethod.graphql';
+import {UserType, DeliveryType} from '../common'
 
 const PurchaseType = new GraphQLObjectType({
     name: 'Purchase',
     fields: () => ({
-        id: { type: new GraphQLNonNull(GraphQLID) },
-        user,
-        connectionMethod: { type: new GraphQLNonNull(GraphQLString) },
-        deliveryMethod,
+        id: {type: new GraphQLNonNull(GraphQLID)},
+        user: {
+            type: UserType
+        },
+        connectionMethod: {type: new GraphQLNonNull(GraphQLString)},
+        deliveryMethod: {
+            type: DeliveryType
+        },
     }),
 })
 

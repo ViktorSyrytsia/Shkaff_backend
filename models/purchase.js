@@ -11,11 +11,11 @@ const purchaseSchema = new Schema({
     deliveryMethod: {
         method: String,
         city: String,
-        postOffice: Number,
+        postOffice: String,
         address: {
             street: String,
-            built: Number,
-            apartment: Number,
+            built: String,
+            apartment: String,
         }
     }
 });
