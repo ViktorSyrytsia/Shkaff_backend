@@ -4,12 +4,13 @@ import {
     GraphQLInt,
     GraphQLList,
     GraphQLNonNull,
-    GraphQLID
+    GraphQLID,
+    GraphQLFloat
 } from 'graphql';
 
 import { Subcategory, Category } from '../../models';
 import { CategoryType, SubcategoryType } from '../types';
-import { ImageSetType, ImageSetInput, SizeType, SizeInput } from '../common';
+import { ImageSetType, ImageSetInput, SizeType, SizeInput, RatingType, RatingInput } from '../common';
 
 const ProductType = new GraphQLObjectType({
     name: 'Product',
@@ -25,23 +26,19 @@ const ProductType = new GraphQLObjectType({
             resolve: (parent) => Subcategory.findById(parent.subcategoryId)
         },
         size: {
-            s: GraphQLString,
-            m: GraphQLString,
-            l: GraphQLString,
-            xl: GraphQLString,
-            xll: GraphQLString,
+            type: new GraphQLNonNull(SizeType)
         },
         description: {
             type: new GraphQLNonNull(GraphQLString)
         },
         price: {
-            type: new GraphQLNonNull(GraphQLInt)
+            type: new GraphQLNonNull(GraphQLFloat)
         },
         images: {
             type: new GraphQLList(ImageSetType)
         },
         rating: {
-            type: new GraphQLNonNull(GraphQLInt)
+            type: new GraphQLList(RatingType)
         }
     }),
 });

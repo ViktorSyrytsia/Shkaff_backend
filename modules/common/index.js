@@ -3,6 +3,7 @@ import { AddressInput, AddressType } from "./address.graphql";
 import { DeliveryInput, DeliveryType } from "./delivery.graphql";
 import { ImageSetInput, ImageSetType } from "./imageSet.graphql";
 import { SizeInput, SizeType } from './size.graphql';
+import { RatingInput, RatingType } from './rating.graphql';
 
 
 export {
@@ -15,5 +16,7 @@ export {
     ImageSetInput,
     ImageSetType,
     SizeInput,
-    SizeType
+    SizeType,
+    RatingInput,
+    RatingType
 }
