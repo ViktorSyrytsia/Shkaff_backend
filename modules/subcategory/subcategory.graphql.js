@@ -11,7 +11,7 @@ import { Category } from '../../models';
 const SubcategoryType = new GraphQLObjectType({
     name: 'Subcategory',
     fields: () => ({
-        id: { type: new GraphQLNonNull(GraphQLString) },
+        id: { type: GraphQLID },
         name: { type: new GraphQLNonNull(GraphQLString) },
         category: {
             type: CategoryType,
