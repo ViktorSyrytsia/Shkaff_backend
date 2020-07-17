@@ -6,15 +6,14 @@ import {
     GraphQLNonNull,
 } from 'graphql';
 
-import {Subcategory, Category} from '../../models';
+import { Subcategory, Category } from '../../models';
 import CategoryType from '../category/category.graphql';
 import SubcategoryType from '../subcategory/subcategory.graphql';
-import ImageSetType from '../imageSet/imageSet.graphql';
 
 const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
-        id: { type: GraphQLString },
+        id: { type: new GraphQLNonNull(GraphQLID) },
         name: { type: new GraphQLNonNull(GraphQLString) },
         category: {
             type: CategoryType,
@@ -25,11 +24,7 @@ const ProductType = new GraphQLObjectType({
             resolve: (parent) => Subcategory.findById(parent.subcategoryId)
         },
         size: {
-            s: { type: new GraphQLNonNull(GraphQLInt) },
-            m: { type: new GraphQLNonNull(GraphQLInt) },
-            l: { type: new GraphQLNonNull(GraphQLInt) },
-            xl: { type: new GraphQLNonNull(GraphQLInt) },
-            xxl: { type: new GraphQLNonNull(GraphQLInt) },
+            type: SizeType
         },
         description: {
             type: new GraphQLNonNull(GraphQLString)
