@@ -1,8 +1,7 @@
 import { GraphQLNonNull, GraphQLString, GraphQLID } from 'graphql';
 
 import SubcategoryType from './subcategory.graphql';
-import {Subcategory} from '../../models';
-
+import { Subcategory } from '../../models';
 
 export default {
         setSubcategory: {
@@ -21,7 +20,7 @@ export default {
         },
         deleteSubcategory: {
                 type: SubcategoryType,
-                args: {id: {type: GraphQLID}},
+                args: { id: { type: GraphQLID } },
                 resolve: (parent, args) => Subcategory.findByIdAndRemove(args.id)
         },
         updateSubcategory: {
