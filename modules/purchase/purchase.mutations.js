@@ -4,7 +4,6 @@ import PurchaseType from './purchase.graphql';
 import {DeliveryInput, UserInput} from '../common';
 import {Purchase} from '../../models';
 
-
 export default {
     addPurchase: {
         type: PurchaseType,

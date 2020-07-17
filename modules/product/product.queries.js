@@ -1,7 +1,7 @@
-import { GraphQLID } from 'graphql';
+import {GraphQLID} from 'graphql';
 
 import ProductType from './product.graphql';
-import { Product } from '../../models';
+import {Product} from '../../models';
 
 export default {
         getProduct: {
