@@ -2,11 +2,10 @@ import {
         GraphQLInputObjectType,
         GraphQLString,
         GraphQLNonNull,
-
 } from 'graphql';
 
-const user = new GraphQLInputObjectType({
-        name: 'User',
+const UserInput = new GraphQLInputObjectType({
+        name: 'UserInput',
         fields: {
                 name: { type: new GraphQLNonNull(GraphQLString) },
                 surname: { type: new GraphQLNonNull(GraphQLString) },
@@ -15,4 +14,4 @@ const user = new GraphQLInputObjectType({
         }
 })
 
-export default user;
+export default UserInput;

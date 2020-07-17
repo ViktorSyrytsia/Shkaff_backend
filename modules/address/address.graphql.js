@@ -1,17 +1,15 @@
 import {
-        GraphQLInputObjectType,
-        GraphQLString,
-        GraphQLNonNull,
+    GraphQLInputObjectType,
+    GraphQLString,
 } from 'graphql';
 
-const UserInput = new GraphQLInputObjectType({
-        name: 'UserInput',
-        fields: {
-                name: { type: new GraphQLNonNull(GraphQLString) },
-                surname: { type: new GraphQLNonNull(GraphQLString) },
-                email: { type: new GraphQLNonNull(GraphQLString) },
-                phone: { type: new GraphQLNonNull(GraphQLString) },
-        }
+const AddressInput = new GraphQLInputObjectType({
+    name: 'AddressInput',
+    fields: {
+        street: {type: GraphQLString},
+        built: {type: GraphQLString},
+        apartment: {type: GraphQLString},
+    }
 })
 
-export default UserInput;
+export default AddressInput;

@@ -8,7 +8,7 @@ import {
 
 } from 'graphql';
 
-import user from './user.graphql';
+import user from '../user/user.graphql';
 import deliveryMethod from './deliveryMethod.graphql';
 
 const PurchaseType = new GraphQLObjectType({

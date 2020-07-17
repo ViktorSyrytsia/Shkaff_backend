@@ -2,22 +2,14 @@ import { Schema, model } from 'mongoose';
 
 const purchaseSchema = new Schema({
     user: {
-        name: String,
-        surname: String,
-        email: String,
-        phone: String,
+        type: Schema.Types.ObjectID,
+        ref: 'User'
     },
     connectionMethod: String,
     deliveryMethod: {
-        method: String,
-        city: String,
-        postOffice: Number,
-        address: {
-            street: String,
-            built: Number,
-            apartment: Number,
-        }
-    }
+        type: Schema.Types.ObjectID,
+        ref: 'Delivery'
+    },
 });
 
 export default model('Purchase', purchaseSchema);

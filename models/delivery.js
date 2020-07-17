@@ -1,10 +1,10 @@
 import {Schema, model} from 'mongoose';
 
-const userSchema = new Schema({
-    name: String,
-    surname: String,
-    email: String,
-    phone: String,
+const deliverySchema = new Schema({
+    method: String,
+    city: String,
+    postOffice: Number,
+    address: {type: Schema.Types.ObjectID, ref: 'Address'}
 });
 
-export default model('User', userSchema);
+export default model('Delivery', deliverySchema);
