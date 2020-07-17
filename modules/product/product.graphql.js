@@ -25,7 +25,11 @@ const ProductType = new GraphQLObjectType({
             resolve: (parent) => Subcategory.findById(parent.subcategoryId)
         },
         size: {
-            type: SizeType
+            s: GraphQLString,
+            m: GraphQLString,
+            l: GraphQLString,
+            xl: GraphQLString,
+            xll: GraphQLString,
         },
         description: {
             type: new GraphQLNonNull(GraphQLString)

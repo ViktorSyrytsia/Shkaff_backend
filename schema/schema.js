@@ -1,7 +1,15 @@
 import {GraphQLObjectType, GraphQLSchema} from 'graphql';
 
-import {CategoryMutations, SubcategoryMutations, PurchaseMutation} from '../modules/mutations';
-import {CategoryQueries, SubcategoryQueries, PurchaseQueries} from '../modules/queries';
+import {
+    CategoryMutations,
+    SubcategoryMutations,
+    PurchaseMutation
+} from '../modules/mutations';
+import {
+    CategoryQueries,
+    SubcategoryQueries,
+    PurchaseQueries
+} from '../modules/queries';
 
 const Mutation = new GraphQLObjectType({
     name: 'Mutation',
