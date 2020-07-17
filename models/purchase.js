@@ -7,9 +7,15 @@ const purchaseSchema = new Schema({
     },
     connectionMethod: String,
     deliveryMethod: {
-        type: Schema.Types.ObjectID,
-        ref: 'Delivery'
-    },
+        method: String,
+        city: String,
+        postOffice: String,
+        address: {
+            street: String,
+            built: String,
+            apartment: String,
+        }
+    }
 });
 
 export default model('Purchase', purchaseSchema);
