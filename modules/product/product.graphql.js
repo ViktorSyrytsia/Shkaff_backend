@@ -28,7 +28,7 @@ const ProductType = new GraphQLObjectType({
             type: new GraphQLNonNull(SizesType)
         },
         description: {
-            type: new GraphQLNonNull(GraphQLString)
+            type: GraphQLString
         },
         price: {
             type: new GraphQLNonNull(GraphQLFloat)

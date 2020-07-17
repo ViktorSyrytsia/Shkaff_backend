@@ -40,6 +40,9 @@ const Mutation = new GraphQLObjectType({
         addProduct: {
             ...ProductMutation.addProduct
         },
+        updateProduct: {
+            ...ProductMutation.updateProduct
+        },
     }
 })
 
