@@ -3,25 +3,34 @@ import {
     GraphQLString,
     GraphQLList,
     GraphQLID,
-    GraphQLFloat, GraphQLInt
+    GraphQLFloat, GraphQLInt, GraphQLInputObjectType
 } from 'graphql';
 
-import ProductType from './product.graphql';
-import {ImageSetInput, RatingInput, SizesInput} from '../common';
+import {
+    ImageSetInput,
+    RatingInput,
+    SizesInput,
+    ProductType,
+    ProductInput
+} from '../types';
 import {Product} from '../../models';
 
 export default {
     addProduct: {
         type: ProductType,
         args: {
-            name: {type: new GraphQLNonNull(GraphQLString)},
+            product: {
+                type: ProductInput
+            }
+
+            /*name: {type: new GraphQLNonNull(GraphQLString)},
             categoryId: {type: new GraphQLNonNull(GraphQLID)},
             subcategoryId: {type: new GraphQLNonNull(GraphQLID)},
             sizes: {type: SizesInput},
             description: {type: GraphQLString},
             price: {type: new GraphQLNonNull(GraphQLFloat)},
             images: {type: new GraphQLList(ImageSetInput)},
-            rating: {type: new GraphQLList(RatingInput)}
+            rating: {type: new GraphQLList(RatingInput)}*/
         },
         resolve(parent, {
             name,
@@ -55,7 +64,10 @@ export default {
     updateProduct: {
         type: ProductType,
         args: {
-            id: {type: new GraphQLNonNull(GraphQLID)},
+            product: {
+                type: ProductInput
+            }
+   /*         id: {type: new GraphQLNonNull(GraphQLID)},
             name: {type: new GraphQLNonNull(GraphQLString)},
             categoryId: {type: new GraphQLNonNull(GraphQLID)},
             subcategoryId: {type: new GraphQLNonNull(GraphQLID)},
@@ -63,7 +75,7 @@ export default {
             description: {type: GraphQLString},
             price: {type: new GraphQLNonNull(GraphQLFloat)},
             images: {type: new GraphQLList(ImageSetInput)},
-            rating: {type: new GraphQLList(RatingInput)}
+            rating: {type: new GraphQLList(RatingInput)}*/
         },
         resolve(parent, {
             id,

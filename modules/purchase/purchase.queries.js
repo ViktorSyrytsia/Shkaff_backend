@@ -1,6 +1,6 @@
 import { GraphQLList, GraphQLID } from 'graphql';
 
-import PurchaseType from './purchase.graphql';
+import {PurchaseType} from '../types';
 import { Purchase } from '../../models';
 
 export default {

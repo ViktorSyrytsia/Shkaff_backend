@@ -38,7 +38,7 @@ const Mutation = new GraphQLObjectType({
             ...PurchaseMutation.addPurchase
         },
         addProduct: {
-            ...ProductMutation.addProduct
+            ...ProductMutation.addProduct,
         },
         updateProduct: {
             ...ProductMutation.updateProduct

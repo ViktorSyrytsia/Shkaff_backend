@@ -3,7 +3,7 @@ import {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList
 import {SubcategoryType, ProductType} from "../types";
 import {Subcategory, Product} from '../../models'
 
-const CategoryType = new GraphQLObjectType({
+export const CategoryType = new GraphQLObjectType({
         name: 'Category',
         fields: () => ({
                 id: { type: GraphQLID },
@@ -20,4 +20,3 @@ const CategoryType = new GraphQLObjectType({
         }),
 });
 
-export default CategoryType;

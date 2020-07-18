@@ -1,6 +1,6 @@
 import { GraphQLNonNull, GraphQLString, GraphQLID } from 'graphql';
 
-import SubcategoryType from './subcategory.graphql';
+import {SubcategoryType} from '../types';
 import { Subcategory } from '../../models';
 
 export default {

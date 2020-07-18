@@ -4,7 +4,7 @@ import {
     GraphQLString
 } from "graphql";
 
-import {AddressInput, AddressType} from './address.graphql'
+import {AddressInput, AddressType} from './index'
 
 export const DeliveryInput = new GraphQLInputObjectType({
     name: 'DeliveryInput',

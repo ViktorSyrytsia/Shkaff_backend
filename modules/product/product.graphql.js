@@ -4,18 +4,27 @@ import {
     GraphQLList,
     GraphQLNonNull,
     GraphQLID,
-    GraphQLFloat
+    GraphQLFloat,
+    GraphQLInputObjectType
 } from 'graphql';
 
-import { Subcategory, Category } from '../../models';
-import { CategoryType, SubcategoryType } from '../types';
-import { ImageSetType, SizesType, RatingType } from '../common';
+import {Subcategory, Category} from '../../models';
+import {
+    CategoryType,
+    SubcategoryType,
+    ImageSetType,
+    SizesType,
+    RatingType,
+    SizesInput,
+    RatingInput,
+    ImageSetInput
+} from '../types';
 
-const ProductType = new GraphQLObjectType({
+export const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
-        id: { type: new GraphQLNonNull(GraphQLID) },
-        name: { type:GraphQLString },
+        id: {type: new GraphQLNonNull(GraphQLID)},
+        name: {type: GraphQLString},
         category: {
             type: CategoryType,
             resolve: (parent) => Category.findById(parent.categoryId)
@@ -42,4 +51,24 @@ const ProductType = new GraphQLObjectType({
     }),
 });
 
-export default ProductType;
+export const ProductInput = new GraphQLInputObjectType({
+    name: 'ProductInput',
+    fields: () => ({
+        name: {type: GraphQLString},
+        categoryId: {type: GraphQLID},
+        subcategoryId: {type: GraphQLID},
+        sizes: {
+            type: new GraphQLNonNull(SizesInput)
+        },
+        description: {type: GraphQLString},
+        price: {
+            type: new GraphQLNonNull(GraphQLFloat)
+        },
+        images: {
+            type: new GraphQLList(ImageSetInput)
+        },
+        rating: {
+            type: new GraphQLList(RatingInput)
+        }
+    }),
+});

@@ -1,6 +1,6 @@
 import {GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
 
-import CategoryType from './category.graphql';
+import {CategoryType} from './category.graphql';
 import {Category} from '../../models';
 
 export default {
