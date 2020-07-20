@@ -5,9 +5,9 @@ import {
     GraphQLID,
 } from 'graphql';
 
-import {UserType, DeliveryType} from '../common'
+import {UserType, DeliveryType} from '../types'
 
-const PurchaseType = new GraphQLObjectType({
+export const PurchaseType = new GraphQLObjectType({
     name: 'Purchase',
     fields: () => ({
         id: {type: new GraphQLNonNull(GraphQLID)},
@@ -20,5 +20,3 @@ const PurchaseType = new GraphQLObjectType({
         },
     }),
 })
-
-export default PurchaseType;

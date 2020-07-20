@@ -1,7 +1,10 @@
 import {GraphQLNonNull, GraphQLString} from 'graphql';
 
-import PurchaseType from './purchase.graphql';
-import {DeliveryInput, UserInput} from '../common';
+import {
+    DeliveryInput,
+    UserInput,
+    PurchaseType
+} from '../types';
 import {Purchase} from '../../models';
 
 export default {
