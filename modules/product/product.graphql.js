@@ -54,13 +54,13 @@ export const ProductType = new GraphQLObjectType({
 export const ProductInput = new GraphQLInputObjectType({
     name: 'ProductInput',
     fields: () => ({
-        name: {type: GraphQLString},
-        categoryId: {type: GraphQLID},
-        subcategoryId: {type: GraphQLID},
+        name: {type: new GraphQLNonNull(GraphQLString)},
+        categoryId: {type: new GraphQLNonNull(GraphQLID)},
+        subcategoryId: {type: new GraphQLNonNull(GraphQLID)},
         sizes: {
             type: new GraphQLNonNull(SizesInput)
         },
-        description: {type: GraphQLString},
+        description: {type: new GraphQLNonNull(GraphQLString)},
         price: {
             type: new GraphQLNonNull(GraphQLFloat)
         },
