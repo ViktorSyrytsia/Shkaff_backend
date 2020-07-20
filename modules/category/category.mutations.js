@@ -4,7 +4,7 @@ import {CategoryType} from './category.graphql';
 import {Category} from '../../models';
 
 export default {
-    setCategory: {
+    addCategory: {
         type: CategoryType,
         args: {
             name: {type: new GraphQLNonNull(GraphQLString)},

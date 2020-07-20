@@ -16,8 +16,8 @@ import {
 const Mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
-        setCategory: {
-            ...CategoryMutations.setCategory
+        addCategory: {
+            ...CategoryMutations.addCategory
         },
         updateCategory: {
             ...CategoryMutations.updateCategory
