@@ -9,7 +9,7 @@ import schema from './schema/schema';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URL, {
         useUnifiedTopology: true,
@@ -29,5 +29,5 @@ dbConnection.on('error', err => console.log(`Connection error: ${err}`));
 dbConnection.once('open', () => console.log(`Connected to DB`));
 
 app.listen(PORT, err => {
-    err ? console.log(err) : console.log('Server started!');
+    err ? console.log(err) : console.log(`Server started! at ${PORT}`);
 });
