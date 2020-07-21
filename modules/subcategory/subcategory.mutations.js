@@ -28,11 +28,12 @@ export default {
                 args: {
                         id: { type: GraphQLID },
                         name: { type: new GraphQLNonNull(GraphQLString) },
+                        categoryId: { type: new GraphQLNonNull(GraphQLID) },
                 },
-                resolve(parent, { id, name }) {
+                resolve(parent, { id, name, categoryId }) {
                         return Subcategory.findByIdAndUpdate(
                                 id,
-                                { $set: { name } },
+                                { $set: { name, categoryId } },
                                 { new: true },
                         );
                 },
