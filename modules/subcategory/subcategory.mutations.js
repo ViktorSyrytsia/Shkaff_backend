@@ -4,7 +4,7 @@ import {SubcategoryType} from '../types';
 import { Subcategory } from '../../models';
 
 export default {
-        setSubcategory: {
+        addSubcategory: {
                 type: SubcategoryType,
                 args: {
                         name: { type: new GraphQLNonNull(GraphQLString) },

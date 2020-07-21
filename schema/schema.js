@@ -25,8 +25,8 @@ const Mutation = new GraphQLObjectType({
         deleteCategory: {
             ...CategoryMutations.deleteCategory
         },
-        setSubcategory: {
-            ...SubcategoryMutations.setSubcategory
+        addSubcategory: {
+            ...SubcategoryMutations.addSubcategory
         },
         deleteSubcategory: {
             ...SubcategoryMutations.deleteSubcategory
