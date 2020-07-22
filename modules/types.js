@@ -15,7 +15,9 @@ import {
     RatingInput,
     SizesType,
     SizesInput,
-    DateScalar
+    DateScalar,
+    PurchasedProductInput,
+    PurchasedProductType,
 } from "./common";
 
 
@@ -38,4 +40,6 @@ export {
     SizesType,
     SizesInput,
     DateScalar,
+    PurchasedProductInput,
+    PurchasedProductType,
 }
