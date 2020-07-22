@@ -20,7 +20,8 @@ const productSchema = new Schema({
     description: String,
     price: Number,
     images: [Object],
-    rating: [Object]
+    rating: [Object],
+    createdAt: { type: Date, default: new Date() },
 });
 
 export default model('Product', productSchema);

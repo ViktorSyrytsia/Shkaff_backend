@@ -1,4 +1,4 @@
-import {GraphQLNonNull, GraphQLString} from 'graphql';
+import {GraphQLBoolean, GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
 
 import {
     DeliveryInput,
@@ -45,5 +45,27 @@ export default {
             });
             return purchase.save()
         }
+    },
+    updatePurchaseStatus: {
+        type: PurchaseType,
+        args: {
+            id: {type: new GraphQLNonNull(GraphQLID)},
+            status: {type: GraphQLBoolean}
+        },
+        resolve(parent, {
+            id,
+            status
+        }) {
+            return Purchase.findOneAndUpdate(
+                {_id: id},
+                {status: status},
+                {returnOriginal: false}
+            );
+        }
+    },
+    deletePurchase: {
+        type: PurchaseType,
+        args: { id: { type: GraphQLID } },
+        resolve: (parent, args) => Purchase.findByIdAndRemove(args.id)
     },
 }

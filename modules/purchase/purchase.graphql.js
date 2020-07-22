@@ -2,10 +2,10 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLNonNull,
-    GraphQLID,
+    GraphQLID, GraphQLBoolean,
 } from 'graphql';
 
-import {UserType, DeliveryType} from '../types'
+import {UserType, DeliveryType, DateScalar} from '../types'
 
 export const PurchaseType = new GraphQLObjectType({
     name: 'Purchase',
@@ -18,5 +18,7 @@ export const PurchaseType = new GraphQLObjectType({
         deliveryMethod: {
             type: DeliveryType
         },
+        status: {type: GraphQLBoolean},
+        createdAt: {type: DateScalar}
     }),
 })

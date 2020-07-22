@@ -17,7 +17,9 @@ const purchaseSchema = new Schema({
             built: String,
             apartment: String,
         }
-    }
+    },
+    createdAt: { type: Date, default: Date.now },
+    status: {type: Boolean, default: false}
 });
 
 export default model('Purchase', purchaseSchema);
