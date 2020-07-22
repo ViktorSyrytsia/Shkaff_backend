@@ -1,7 +1,7 @@
 import {GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
 
 import {CategoryType} from './category.graphql';
-import {Category, Subcategory} from '../../models';
+import {Category, Product, Subcategory} from '../../models';
 
 export default {
     addCategory: {
@@ -38,15 +38,11 @@ export default {
         type: CategoryType,
         args: {id: {type: GraphQLID}},
         resolve: (parent, args) => {
-            const event = Category.findByIdAndRemove(args.id);
-            const assignment = Subcategory.remove({categoryId: args.id})
-
-            return {
-                ...event,
-                ...assignment
-            }
+            return  Promise.all([
+                Product.deleteMany({categoryId: args.id}),
+                Subcategory.deleteMany({categoryId: args.id}),
+                Category.findByIdAndRemove(args.id)
+            ])
         }
     },
 }
-
-//Subcategory.remove({categoryId: args.id}).exec()

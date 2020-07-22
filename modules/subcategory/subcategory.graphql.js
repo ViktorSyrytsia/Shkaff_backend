@@ -1,7 +1,6 @@
 import {
     GraphQLObjectType,
     GraphQLString,
-    GraphQLNonNull,
     GraphQLID, GraphQLList,
 } from 'graphql';
 
@@ -12,7 +11,7 @@ export const SubcategoryType = new GraphQLObjectType({
     name: 'Subcategory',
     fields: () => ({
         id: { type: GraphQLID },
-        name: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: GraphQLString },
         category: {
             type: CategoryType,
             resolve: (parent) => Category.findById(parent.categoryId)
