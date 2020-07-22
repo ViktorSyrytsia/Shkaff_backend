@@ -1,7 +1,7 @@
 import {GraphQLID, GraphQLNonNull, GraphQLString} from 'graphql';
 
 import {CategoryType} from './category.graphql';
-import {Category} from '../../models';
+import {Category, Subcategory} from '../../models';
 
 export default {
     addCategory: {
@@ -37,6 +37,10 @@ export default {
     deleteCategory: {
         type: CategoryType,
         args: {id: {type: GraphQLID}},
-        resolve: (parent, args) => Category.findByIdAndRemove(args.id)
+        resolve: (parent, args) => {
+            Category.findByIdAndRemove(args.id)
+        }
     },
 }
+
+//Subcategory.remove({categoryId: args.id}).exec()

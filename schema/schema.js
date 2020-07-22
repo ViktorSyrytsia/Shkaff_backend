@@ -72,7 +72,10 @@ const Query = new GraphQLObjectType({
         },
         getProduct: {
             ...ProductQueries.getProduct
-        }
+        },
+        getProducts: {
+            ...ProductQueries.getProducts
+        },
     }
 });
 
