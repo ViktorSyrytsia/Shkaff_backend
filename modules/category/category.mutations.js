@@ -38,7 +38,13 @@ export default {
         type: CategoryType,
         args: {id: {type: GraphQLID}},
         resolve: (parent, args) => {
-            Category.findByIdAndRemove(args.id)
+            const event = Category.findByIdAndRemove(args.id);
+            const assignment = Subcategory.remove({categoryId: args.id})
+
+            return {
+                ...event,
+                ...assignment
+            }
         }
     },
 }

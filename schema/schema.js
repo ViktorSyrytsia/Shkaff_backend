@@ -43,6 +43,9 @@ const Mutation = new GraphQLObjectType({
         updateProduct: {
             ...ProductMutation.updateProduct
         },
+        deleteProduct: {
+            ...ProductMutation.deleteProduct
+        },
         updateProductRating: {
             ...ProductMutation.updateProductRating
         },

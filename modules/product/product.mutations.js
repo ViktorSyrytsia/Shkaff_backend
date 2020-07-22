@@ -11,9 +11,9 @@ import {
     RatingInput,
     SizesInput,
     ProductType,
-    ProductInput
+    ProductInput, SubcategoryType
 } from '../types';
-import {Product} from '../../models';
+import {Product, Subcategory} from '../../models';
 
 export default {
     addProduct: {
@@ -92,6 +92,11 @@ export default {
                 {new: true}
             );
         }
+    },
+    deleteProduct: {
+        type: ProductType,
+        args: { id: { type: GraphQLID } },
+        resolve: (parent, args) => Product.findByIdAndRemove(args.id)
     },
     updateProductRating: {
         type: ProductType,
