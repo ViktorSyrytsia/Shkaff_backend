@@ -18,7 +18,7 @@ export const PurchaseType = new GraphQLObjectType({
         deliveryMethod: {
             type: DeliveryType
         },
-        status: {type: GraphQLBoolean},
+        status: {type: GraphQLString},
         createdAt: {type: DateScalar}
     }),
 })

@@ -19,7 +19,7 @@ const purchaseSchema = new Schema({
         }
     },
     createdAt: { type: Date, default: Date.now },
-    status: {type: Boolean, default: false}
+    status: {type: String, default: 'processing'}
 });
 
 export default model('Purchase', purchaseSchema);

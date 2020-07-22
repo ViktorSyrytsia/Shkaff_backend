@@ -50,7 +50,7 @@ export default {
         type: PurchaseType,
         args: {
             id: {type: new GraphQLNonNull(GraphQLID)},
-            status: {type: GraphQLBoolean}
+            status: {type: GraphQLString}
         },
         resolve(parent, {
             id,
