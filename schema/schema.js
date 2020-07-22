@@ -37,6 +37,12 @@ const Mutation = new GraphQLObjectType({
         addPurchase: {
             ...PurchaseMutation.addPurchase
         },
+        deletePurchase: {
+            ...PurchaseMutation.deletePurchase
+        },
+        updatePurchaseStatus: {
+            ...PurchaseMutation.updatePurchaseStatus
+        },
         addProduct: {
             ...ProductMutation.addProduct,
         },
