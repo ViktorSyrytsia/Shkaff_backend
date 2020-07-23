@@ -1,10 +1,10 @@
 import { GraphQLNonNull, GraphQLString, GraphQLID } from 'graphql';
 
-import SubcategoryType from './subcategory.graphql';
-import { Subcategory } from '../../models';
+import {SubcategoryType} from '../types';
+import {Product, Subcategory} from '../../models';
 
 export default {
-        setSubcategory: {
+        addSubcategory: {
                 type: SubcategoryType,
                 args: {
                         name: { type: new GraphQLNonNull(GraphQLString) },
@@ -21,18 +21,24 @@ export default {
         deleteSubcategory: {
                 type: SubcategoryType,
                 args: { id: { type: GraphQLID } },
-                resolve: (parent, args) => Subcategory.findByIdAndRemove(args.id)
+                resolve: (parent, args) => {
+                        return Promise.all([
+                                Product.deleteMany({subcategoryId: args.id}),
+                                Subcategory.findByIdAndRemove(args.id)
+                        ])
+                }
         },
         updateSubcategory: {
                 type: SubcategoryType,
                 args: {
                         id: { type: GraphQLID },
                         name: { type: new GraphQLNonNull(GraphQLString) },
+                        categoryId: { type: new GraphQLNonNull(GraphQLID) },
                 },
-                resolve(parent, { id, name }) {
+                resolve(parent, { id, name, categoryId }) {
                         return Subcategory.findByIdAndUpdate(
                                 id,
-                                { $set: { name } },
+                                { $set: { name, categoryId } },
                                 { new: true },
                         );
                 },

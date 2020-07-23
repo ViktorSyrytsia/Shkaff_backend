@@ -1,4 +1,45 @@
-export { default as CategoryType } from './category/category.graphql';
-export { default as SubcategoryType } from './subcategory/subcategory.graphql';
-export { default as PurchaseType } from './purchase/purchase.graphql';
-export { default as ProductType } from './product/product.graphql';
+import {ProductType, ProductInput} from "./product/product.graphql";
+import {CategoryType} from "./category/category.graphql";
+import {SubcategoryType,} from "./subcategory/subcategory.graphql";
+import {PurchaseType} from "./purchase/purchase.graphql";
+import {
+    AddressType,
+    AddressInput,
+    UserType,
+    UserInput,
+    DeliveryType,
+    DeliveryInput,
+    ImageSetType,
+    ImageSetInput,
+    RatingType,
+    RatingInput,
+    SizesType,
+    SizesInput,
+    DateScalar,
+    PurchasedProductInput,
+    PurchasedProductType,
+} from "./common";
+
+
+export {
+    ProductType,
+    ProductInput,
+    SubcategoryType,
+    PurchaseType,
+    CategoryType,
+    AddressType,
+    AddressInput,
+    UserType,
+    UserInput,
+    DeliveryType,
+    DeliveryInput,
+    ImageSetType,
+    ImageSetInput,
+    RatingType,
+    RatingInput,
+    SizesType,
+    SizesInput,
+    DateScalar,
+    PurchasedProductInput,
+    PurchasedProductType,
+}

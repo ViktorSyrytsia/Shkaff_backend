@@ -16,8 +16,8 @@ import {
 const Mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
-        setCategory: {
-            ...CategoryMutations.setCategory
+        addCategory: {
+            ...CategoryMutations.addCategory
         },
         updateCategory: {
             ...CategoryMutations.updateCategory
@@ -25,8 +25,8 @@ const Mutation = new GraphQLObjectType({
         deleteCategory: {
             ...CategoryMutations.deleteCategory
         },
-        setSubcategory: {
-            ...SubcategoryMutations.setSubcategory
+        addSubcategory: {
+            ...SubcategoryMutations.addSubcategory
         },
         deleteSubcategory: {
             ...SubcategoryMutations.deleteSubcategory
@@ -37,11 +37,20 @@ const Mutation = new GraphQLObjectType({
         addPurchase: {
             ...PurchaseMutation.addPurchase
         },
+        deletePurchase: {
+            ...PurchaseMutation.deletePurchase
+        },
+        updatePurchaseStatus: {
+            ...PurchaseMutation.updatePurchaseStatus
+        },
         addProduct: {
-            ...ProductMutation.addProduct
+            ...ProductMutation.addProduct,
         },
         updateProduct: {
             ...ProductMutation.updateProduct
+        },
+        deleteProduct: {
+            ...ProductMutation.deleteProduct
         },
         updateProductRating: {
             ...ProductMutation.updateProductRating
@@ -72,7 +81,10 @@ const Query = new GraphQLObjectType({
         },
         getProduct: {
             ...ProductQueries.getProduct
-        }
+        },
+        getProducts: {
+            ...ProductQueries.getProducts
+        },
     }
 });
 

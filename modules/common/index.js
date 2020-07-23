@@ -4,6 +4,8 @@ import { DeliveryInput, DeliveryType } from "./delivery.graphql";
 import { ImageSetInput, ImageSetType } from "./imageSet.graphql";
 import { SizesInput, SizesType } from './sizes.graphql';
 import { RatingInput, RatingType } from './rating.graphql';
+import { PurchasedProductInput, PurchasedProductType } from './purchasedProduct.graphql';
+import { DateScalar } from './date.graphql';
 
 
 export {
@@ -18,5 +20,8 @@ export {
     SizesInput,
     SizesType,
     RatingInput,
-    RatingType
+    RatingType,
+    DateScalar,
+    PurchasedProductInput,
+    PurchasedProductType,
 }
