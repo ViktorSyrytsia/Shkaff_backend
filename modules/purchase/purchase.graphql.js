@@ -3,9 +3,10 @@ import {
     GraphQLString,
     GraphQLNonNull,
     GraphQLID,
+    GraphQLList,
 } from 'graphql';
 
-import {UserType, DeliveryType} from '../types'
+import {UserType, DeliveryType, DateScalar, PurchasedProductType} from '../types'
 
 export const PurchaseType = new GraphQLObjectType({
     name: 'Purchase',
@@ -14,9 +15,14 @@ export const PurchaseType = new GraphQLObjectType({
         user: {
             type: UserType
         },
-        connectionMethod: {type: new GraphQLNonNull(GraphQLString)},
         deliveryMethod: {
             type: DeliveryType
         },
+        connectionMethod: {type: new GraphQLNonNull(GraphQLString)},
+        products: {
+            type: new GraphQLList(PurchasedProductType)
+        },
+        status: {type: GraphQLString},
+        createdAt: {type: DateScalar}
     }),
 })

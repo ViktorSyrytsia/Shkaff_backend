@@ -17,7 +17,8 @@ import {
     RatingType,
     SizesInput,
     RatingInput,
-    ImageSetInput
+    ImageSetInput,
+    DateScalar
 } from '../types';
 
 export const ProductType = new GraphQLObjectType({
@@ -47,7 +48,8 @@ export const ProductType = new GraphQLObjectType({
         },
         rating: {
             type: new GraphQLList(RatingType)
-        }
+        },
+        createdAt: {type: DateScalar}
     }),
 });
 
