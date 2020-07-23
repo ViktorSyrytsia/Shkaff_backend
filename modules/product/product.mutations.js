@@ -13,7 +13,7 @@ import {
     ProductType,
     ProductInput, SubcategoryType
 } from '../types';
-import {Product, Subcategory} from '../../models';
+import { Product, Subcategory } from '../../models';
 
 export default {
     addProduct: {
@@ -28,7 +28,7 @@ export default {
                 name,
                 categoryId,
                 subcategoryId,
-                sizes: {s, m, l, xl, xxl},
+                sizes: { xs, s, m, l, xl, xxl },
                 description,
                 price,
                 images,
@@ -40,6 +40,7 @@ export default {
                 categoryId,
                 subcategoryId,
                 sizes: {
+                    xs,
                     s,
                     m,
                     l,
@@ -57,7 +58,7 @@ export default {
     updateProduct: {
         type: ProductType,
         args: {
-            id: {type: new GraphQLNonNull(GraphQLID)},
+            id: { type: new GraphQLNonNull(GraphQLID) },
             product: {
                 type: ProductInput
             }
@@ -68,7 +69,7 @@ export default {
                 name,
                 categoryId,
                 subcategoryId,
-                sizes: {s, m, l, xl, xxl},
+                sizes: { xs, s, m, l, xl, xxl },
                 description,
                 price,
                 images,
@@ -82,14 +83,14 @@ export default {
                         name,
                         categoryId,
                         subcategoryId,
-                        sizes: {s, m, l, xl, xxl},
+                        sizes: { xs, s, m, l, xl, xxl },
                         description,
                         price,
                         images,
                         rating
                     }
                 },
-                {new: true}
+                { new: true }
             );
         }
     },
@@ -101,17 +102,17 @@ export default {
     updateProductRating: {
         type: ProductType,
         args: {
-            id: {type: new GraphQLNonNull(GraphQLID)},
-            rate: {type: GraphQLInt}
+            id: { type: new GraphQLNonNull(GraphQLID) },
+            rate: { type: GraphQLInt }
         },
         resolve(parent, {
             id,
             rate
         }) {
             return Product.findOneAndUpdate(
-                {_id: id},
-                {$push: {rating: {value: rate}}},
-                {returnOriginal: false}
+                { _id: id },
+                { $push: { rating: { value: rate } } },
+                { returnOriginal: false }
             );
         }
     }

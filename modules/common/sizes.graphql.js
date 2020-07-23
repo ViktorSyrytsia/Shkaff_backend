@@ -7,6 +7,7 @@ import {
 export const SizesInput = new GraphQLInputObjectType({
         name: 'SizesInput',
         fields: () => ({
+                xs: { type: GraphQLInt },
                 s: { type: GraphQLInt },
                 m: { type: GraphQLInt },
                 l: { type: GraphQLInt },
@@ -18,6 +19,7 @@ export const SizesInput = new GraphQLInputObjectType({
 export const SizesType = new GraphQLObjectType({
         name: 'Sizes',
         fields: () => ({
+                xs: { type: GraphQLInt },
                 s: { type: GraphQLInt },
                 m: { type: GraphQLInt },
                 l: { type: GraphQLInt },
