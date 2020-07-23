@@ -21,7 +21,6 @@ export const PurchasedProductInput = new GraphQLInputObjectType({
 export const PurchasedProductType = new GraphQLObjectType({
     name: 'PurchasedProduct',
     fields: () => ({
-        id: {type: GraphQLID},
         name: {type: GraphQLString},
         category: {type: GraphQLString},
         subcategory: {type: GraphQLString},

@@ -7,7 +7,7 @@ const purchaseSchema = new Schema({
         email: String,
         phone: String,
     },
-    deliveryMethod: {
+    delivery: {
         method: String,
         city: String,
         postOffice: String,
@@ -19,7 +19,7 @@ const purchaseSchema = new Schema({
     },
     products: [Object],
     connectionMethod: String,
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: new Date(2012, 6, 4) },
     status: {type: String, default: 'processing'}
 });
 
