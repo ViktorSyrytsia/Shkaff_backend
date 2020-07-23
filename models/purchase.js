@@ -19,7 +19,7 @@ const purchaseSchema = new Schema({
     },
     products: [Object],
     connectionMethod: String,
-    createdAt: { type: Date, default: new Date(2012, 6, 4) },
+    createdAt: { type: Date, default: new Date() },
     status: {type: String, default: 'processing'}
 });
 
