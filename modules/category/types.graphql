@@ -1,8 +1,9 @@
 type Category {
-  _id: ID!
-  name: String!
+  id: ID!
+  name: String
   image: String
   subcategories: [Subcategory!]!
+
 }
 
 input CategoryInput {

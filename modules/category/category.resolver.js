@@ -6,10 +6,9 @@ const categoryQuery = {
 };
 
 const categoryMutation = {
-        addCategory: (parent, args) => {
-                console.log(parent, args)
-                categoryService.addCategory(args.category);
-        }
+        addCategory: (parent, args) => categoryService.addCategory(args.category),
+        updateCategory: (parent, args) => categoryService.updateCategory(args),
+        deleteCategory: (parent, args) => categoryService.deleteCategory(args.id),
 };
 
 export { categoryQuery, categoryMutation };

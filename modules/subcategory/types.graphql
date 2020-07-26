@@ -1,10 +1,10 @@
 type Subcategory {
-    _id: ID!
-    name: String!
+    id: ID!
+    name: String
     category: Category
 }
 
 input SubcategoryInput {
     name: String!
-    category: CategoryInput
+    categoryId: ID!
 }
