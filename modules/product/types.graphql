@@ -1,0 +1,29 @@
+#import "../common/sizes.graphql"
+#import "../common/rating.graphql"
+#import "../common/imageSet.graphql"
+
+scalar Date
+
+type Product {
+    id: ID!
+    name: String
+    category: Category
+    subcategory: Subcategory
+    price: Float
+    description: String
+    sizes: Sizes
+    images: [ImageSet]
+    rating: [Rating]
+    createdAt: Date
+}
+
+input ProductInput {
+    name: String!
+    categoryId: ID!
+    subcategoryId: ID!
+    price: Float
+    description: String
+    sizes: SizesInput
+    images: [ImageSetInput]
+    rating: [RatingInput]
+}

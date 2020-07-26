@@ -9,7 +9,7 @@ class SubcategoryService {
         return Subcategory.findById(id);
     }
 
-    getSubcategoriesByParentId(id) {
+    getSubcategoriesByCategoryId(id) {
         return Subcategory.find({categoryId: id})
     }
 

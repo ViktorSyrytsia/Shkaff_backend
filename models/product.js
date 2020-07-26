@@ -1,34 +1,28 @@
 import {Schema, model} from 'mongoose';
 
 const productSchema = new Schema({
-    name: {type: String, required: true},
-    category: {type: String, required: true, ref: 'Category'},
-    subcategory: {type: String, required: true, ref: 'Subcategory'},
-    size: {
-        s: {type: Number},
-        m: {type: Number},
-        l: {type: Number},
-        xl: {type: Number},
-        xxl: {type: Number},
+    name: String,
+    categoryId: {
+        type: Schema.Types.ObjectID,
+        ref: 'Category'
     },
-    description: {type: String, required: true},
-    price: {type: Number, required: true},
-    image: [
-        {type: String, required: true},
-        {
-            type: String,
-        },
-        {
-            type: String,
-        },
-        {
-            type: String,
-        },
-        {
-            type: String,
-        }
-    ],
-    rating: Number
+    subcategoryId: {
+        type: Schema.Types.ObjectID,
+        ref: 'Subcategory'
+    },
+    sizes: {
+        xs: Number,
+        s: Number,
+        m: Number,
+        l: Number,
+        xl: Number,
+        xxl: Number,
+    },
+    description: String,
+    price: Number,
+    images: [Object],
+    rating: [Object],
+    createdAt: { type: Date, default: new Date() },
 });
 
 export default model('Product', productSchema);

@@ -1,11 +1,14 @@
 #import "modules/category/types.graphql"
 #import "modules/subcategory/types.graphql"
+#import "modules/product/types.graphql"
 
 type Query {
     getCategory(id: ID!): Category
     getCategories: [Category!]!
     getSubcategory(id: ID!): Subcategory
     getSubcategories: [Subcategory!]!
+    getProduct(id: ID!): Product
+    getProducts: [Product!]!
 }
 
 type Mutation {
@@ -15,5 +18,9 @@ type Mutation {
     addSubcategory(subcategory: SubcategoryInput!): Subcategory
     updateSubcategory(id: ID!, subcategory: SubcategoryInput!): Subcategory
     deleteSubcategory(id: ID!): Subcategory
+    addProduct(product: ProductInput!): Product
+    updateProduct(id: ID!, product: ProductInput!): Product
+    deleteProduct(id: ID!): Product
+    updateProductRating(id: ID!, rate: Int): Product
 }
 
