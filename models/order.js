@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+import {Schema, model} from 'mongoose';
 
-const purchaseSchema = new Schema({
+const orderSchema = new Schema({
     user: {
         name: String,
         surname: String,
@@ -19,8 +19,8 @@ const purchaseSchema = new Schema({
     },
     products: [Object],
     connectionMethod: String,
-    createdAt: { type: Date, default: new Date() },
+    createdAt: { type: Date, default: Date.now },
     status: {type: String, default: 'processing'}
 });
 
-export default model('Purchase', purchaseSchema);
+export default model('Order', orderSchema);
