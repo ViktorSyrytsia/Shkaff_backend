@@ -14,7 +14,7 @@ class CategoryService {
         return category.save();
     }
 
-    updateCategory({id, name, image}) {
+    updateCategory({id, category: {name, image}}) {
         return Category.findByIdAndUpdate(
             id,
             {$set: {name, image}},

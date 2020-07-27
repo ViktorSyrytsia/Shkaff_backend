@@ -6,7 +6,6 @@ import {orderQuery, orderMutation} from './modules/order/order.resolver';
 import CategoryService from "./modules/category/category.service";
 import SubcategoryService from "./modules/subcategory/subcategory.service";
 import ProductService from "./modules/product/product.service";
-import OrderService from "./modules/order/order.service";
 
 const resolvers = {
     Query: {
@@ -31,7 +30,7 @@ const resolvers = {
     },
     Product: {
         category: (parent) => CategoryService.getCategoryById(parent.categoryId),
-        subcategory: (parent) => SubcategoryService.getSubcategory(parent.subcategoryId),
+        subcategory: (parent) => SubcategoryService.getSubcategoryById(parent.subcategoryId),
     }
 };
 
