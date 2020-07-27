@@ -1,0 +1,21 @@
+#import "../common/delivery.graphql"
+#import "../common/user.graphql"
+#import "../common/orderProduct.graphql"
+
+type Order {
+    id: ID!
+    user: User
+    delivery: Delivery
+    connectionMethod: String
+    products: [OrderProduct]
+    status: String
+    createdAt: Date
+}
+
+input OrderInput {
+    user: UserInput!
+    delivery: DeliveryInput!
+    connectionMethod: String!
+    products: [OrderProductInput]
+    status: String
+}

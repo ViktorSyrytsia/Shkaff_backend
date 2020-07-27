@@ -1,13 +1,13 @@
-import { Schema, model } from 'mongoose';
+import {Schema, model} from 'mongoose';
 
-const purchaseSchema = new Schema({
+const orderSchema = new Schema({
     user: {
         name: String,
         surname: String,
         email: String,
         phone: String,
     },
-    deliveryMethod: {
+    delivery: {
         method: String,
         city: String,
         postOffice: String,
@@ -23,4 +23,4 @@ const purchaseSchema = new Schema({
     status: {type: String, default: 'processing'}
 });
 
-export default model('Purchase', purchaseSchema);
+export default model('Order', orderSchema);
