@@ -15,7 +15,7 @@ export const PurchaseType = new GraphQLObjectType({
         user: {
             type: UserType
         },
-        deliveryMethod: {
+        delivery: {
             type: DeliveryType
         },
         connectionMethod: {type: new GraphQLNonNull(GraphQLString)},

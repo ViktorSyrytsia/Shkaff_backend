@@ -14,7 +14,7 @@ export default {
             user: {
                 type: UserInput
             },
-            deliveryMethod: {
+            delivery: {
                 type: DeliveryInput
             },
             connectionMethod: {type: new GraphQLNonNull(GraphQLString)},
@@ -22,7 +22,7 @@ export default {
         },
         resolve(parent, {
             user: {name, surname, email, phone},
-            deliveryMethod: {method, city, postOffice, address: {street, built, apartment}},
+            delivery: {method, city, postOffice, address: {street, built, apartment}},
             connectionMethod,
             products,
         }) {
@@ -33,7 +33,7 @@ export default {
                     email,
                     phone
                 },
-                deliveryMethod: {
+                delivery: {
                     method,
                     city,
                     postOffice,

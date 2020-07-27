@@ -7,7 +7,7 @@ const purchaseSchema = new Schema({
         email: String,
         phone: String,
     },
-    deliveryMethod: {
+    delivery: {
         method: String,
         city: String,
         postOffice: String,
