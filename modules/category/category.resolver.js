@@ -2,7 +2,7 @@ import categoryService from './category.service';
 
 const categoryQuery = {
         getCategories: () => categoryService.getCategories(),
-        getCategory: (parent, args) => categoryService.getCategory(args.id),
+        getCategoryById: (parent, args) => categoryService.getCategoryById(args.id),
 };
 
 const categoryMutation = {

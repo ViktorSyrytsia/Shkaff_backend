@@ -5,7 +5,7 @@ class CategoryService {
         return Category.find();
     }
 
-    getCategory(id) {
+    getCategoryById(id) {
         return Category.findById(id);
     }
 

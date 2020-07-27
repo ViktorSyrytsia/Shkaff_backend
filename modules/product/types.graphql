@@ -25,5 +25,4 @@ input ProductInput {
     description: String
     sizes: SizesInput
     images: [ImageSetInput]
-    rating: [RatingInput]
 }

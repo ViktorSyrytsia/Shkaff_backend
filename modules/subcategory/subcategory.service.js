@@ -5,7 +5,7 @@ class SubcategoryService {
         return Subcategory.find();
     }
 
-    getSubcategory(id) {
+    getSubcategoryById(id) {
         return Subcategory.findById(id);
     }
 

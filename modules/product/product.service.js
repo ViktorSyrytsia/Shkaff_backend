@@ -5,7 +5,7 @@ class ProductService {
         return Product.find();
     }
 
-    getProduct(id) {
+    getProductById(id) {
         return Product.findById(id);
     }
 

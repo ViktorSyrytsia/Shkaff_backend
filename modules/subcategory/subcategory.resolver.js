@@ -2,7 +2,7 @@ import subcategoryService from './subcategory.service';
 
 const subcategoryQuery = {
     getSubcategories: () => subcategoryService.getSubcategories(),
-    getSubcategory: (parent, args) => subcategoryService.getSubcategory(args.id),
+    getSubcategoryById: (parent, args) => subcategoryService.getSubcategoryById(args.id),
 };
 
 const subcategoryMutation = {
