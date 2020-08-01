@@ -1,10 +1,10 @@
 #import "../common/delivery.graphql"
-#import "../common/user.graphql"
+#import "../common/customer.graphql"
 #import "../common/orderProduct.graphql"
 
 type Order {
     id: ID!
-    user: User
+    customer: Customer
     delivery: Delivery
     connectionMethod: String
     products: [OrderProduct]
@@ -13,7 +13,7 @@ type Order {
 }
 
 input OrderInput {
-    user: UserInput!
+    customer: CustomerInput!
     delivery: DeliveryInput!
     connectionMethod: String!
     products: [OrderProductInput]

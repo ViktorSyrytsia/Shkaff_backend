@@ -1,11 +1,11 @@
-type User {
+type Customer {
     name: String
     surname: String
     email: String
     phone: String
 }
 
-input UserInput {
+input CustomerInput {
     name: String
     surname: String
     email: String
