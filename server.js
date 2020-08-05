@@ -2,15 +2,15 @@ import {ApolloServer} from 'apollo-server';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 
-// import userService from './modules/user/user.service';
-// import verifyUser from './utils/verifyUser';
+import userService from './modules/user/user.service';
+import verifyUser from './utils/verifyUser';
 import resolvers from './resolvers';
 import schema from './types.graphql';
 
 const server = new ApolloServer({
     typeDefs: schema,
     resolvers,
-/*    context: async ({ req }) => {
+ /*   context: async ({ req }) => {
         const { token } = req.headers || '';
         if (token) {
             const user = verifyUser(token);
