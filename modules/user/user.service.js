@@ -1,5 +1,6 @@
-import {User} from '../../models';
+import bcrypt from 'bcrypt';
 
+import {User} from '../../models';
 import generatePasswordHash from "../../utils/generatePasswordHash";
 
 class UserService {
@@ -11,24 +12,40 @@ class UserService {
         return User.findById(id);
     }
 
-    createUser(data) {
+    registerUser(data) {
         const user = new User(data);
         return user.save();
     }
 
-    updateUser({id, email, password}) {
-        return (async function fn () {
-            let hashedPass;
-            await generatePasswordHash(password)
-                .then(hash => hashedPass = String(hash))
-                .catch(err => console.log(err));
+    async loginUser({email, password}) {
+        const user = await User.findOne({email: email});
 
-            return User.findOneAndUpdate(
-                {_id: id},
-                {email: email, password: password},
-                {returnOriginal: false}
-            );
-        })()
+        const match = await bcrypt.compare(
+            password,
+            user.password,
+        );
+
+        if (match) {
+            console.log('GREAT!')
+            return {
+                status: 'success'
+            }
+        } else {
+            console.log('WTF!')
+        }
+    }
+
+    async updateUser({id, email, password}) {
+        let hashedPass;
+        await generatePasswordHash(password)
+            .then(hash => hashedPass = String(hash))
+            .catch(err => console.log(err));
+
+        return User.findOneAndUpdate(
+            {_id: id},
+            {email: email, password: password},
+            {returnOriginal: false}
+        );
     }
 
     deleteUser(id) {

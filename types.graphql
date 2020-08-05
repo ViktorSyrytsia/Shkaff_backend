@@ -31,7 +31,8 @@ type Mutation {
     addOrder(order: OrderInput!): Order
     deleteOrder(id: ID!): Order
     updateOrderStatus(id: ID!, status: String): Order
-    createUser(user: UserInput!): User
+    registerUser(user: UserInput!): User
+    loginUser(user: UserInput!): User
     deleteUser(id: ID!): User
     updateUser(id: ID!, user: UserInput!): User
 }
