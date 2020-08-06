@@ -2,7 +2,6 @@ import userService from './user.service';
 
 const userQuery = {
     getUsers: () => userService.getUsers(),
-    getUserById: (parent, args) => userService.getUserById(args.id),
 };
 
 const userMutation = {

@@ -1,15 +1,12 @@
+import { AuthenticationError, UserInputError } from 'apollo-server';
 import bcrypt from 'bcrypt';
 
 import {User} from '../../models';
-import generatePasswordHash from "../../utils/generatePasswordHash";
+import generateToken from "../../utils/createToken";
 
 class UserService {
     getUsers() {
         return User.find();
-    }
-
-    getUserById(id) {
-        return User.findById(id);
     }
 
     registerUser(data) {
@@ -17,25 +14,52 @@ class UserService {
         return user.save();
     }
 
+    async getUserByFieldOrThrow(key, param) {
+        const checkedUser = await User.findOne({
+            [key]: param,
+        });
+
+        if (!checkedUser) {
+            const USER_WITH_KEY_NOT_FOUND = `User with provided ${[key]} not found`;
+            throw new UserInputError(USER_WITH_KEY_NOT_FOUND, {
+                errors: {
+                    [key]: USER_WITH_KEY_NOT_FOUND,
+                },
+            });
+        }
+
+        return checkedUser;
+    }
+
     async loginUser({email, password}) {
-        const user = await User.findOne({email: email});
+        const user = await this.getUserByFieldOrThrow('email', email)
+
+        if (user.role === 'user') {
+            throw new AuthenticationError(`No access!`);
+        }
 
         const match = await bcrypt.compare(
             password,
             user.password,
         );
 
-        if (match) {
-            console.log('GREAT!')
-            return {
-                status: 'success'
-            }
-        } else {
-            console.log('WTF!')
+        if (!match || !user) {
+            throw new Error(`Wrong email or password!`);
         }
+
+        const token = await generateToken(user._id, user.email);
+
+        return {
+            user: {
+                ...user._doc,
+            },
+            _id: user._id,
+            role: user.role,
+            token,
+        };
     }
 
-    async updateUser({id, email, password}) {
+ /*   async updateUser({id, email, password}) {
         let hashedPass;
         await generatePasswordHash(password)
             .then(hash => hashedPass = String(hash))
@@ -46,7 +70,7 @@ class UserService {
             {email: email, password: password},
             {returnOriginal: false}
         );
-    }
+    }*/
 
     deleteUser(id) {
         return User.findByIdAndRemove(id)
