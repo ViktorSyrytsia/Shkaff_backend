@@ -50,10 +50,8 @@ class UserService {
         const token = await generateToken(user._id, user.email);
 
         return {
-            user: {
-                ...user._doc,
-            },
-            _id: user._id,
+            name: user.name,
+            id: user._id,
             role: user.role,
             token,
         };
