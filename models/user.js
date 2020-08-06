@@ -3,6 +3,7 @@ import {Schema, model} from 'mongoose';
 import generatePasswordHash from "../utils/generatePasswordHash";
 
 const userSchema = new Schema({
+    name: String,
     email: {
         type: String,
         required: true
