@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const productSchema = new Schema({
     name: String,
@@ -11,6 +11,7 @@ const productSchema = new Schema({
         ref: 'Subcategory'
     },
     sizes: {
+        xs: Number,
         s: Number,
         m: Number,
         l: Number,
@@ -21,7 +22,7 @@ const productSchema = new Schema({
     price: Number,
     images: [Object],
     rating: [Object],
-    createdAt: { type: Date, default: new Date() },
+    createdAt: { type: Date, default: Date.now },
 });
 
 export default model('Product', productSchema);

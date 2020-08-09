@@ -1,15 +1,30 @@
-import express from 'express';
-import {graphqlHTTP} from 'express-graphql';
+import {ApolloServer, AuthenticationError} from 'apollo-server';
 import mongoose from 'mongoose';
-import cors from 'cors';
 import dotenv from 'dotenv'
 
-import schema from './schema/schema';
+import userService from './modules/user/user.service';
+import verifyUser from './utils/verifyUser';
+import resolvers from './resolvers';
+import schema from './types.graphql';
+
+const server = new ApolloServer({
+    typeDefs: schema,
+    resolvers,
+    context: async ({ req }) => {
+        const { token } = req.headers || '';
+        if (token) {
+            const user = verifyUser(token);
+            if (!user) throw new AuthenticationError('Invalid authorization token')
+            return {
+                user: await userService.getUserByFieldOrThrow('email', user.email),
+            };
+        }
+    },
+})
 
 dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 mongoose.connect(process.env.MONGO_URL, {
         useUnifiedTopology: true,
@@ -18,16 +33,10 @@ mongoose.connect(process.env.MONGO_URL, {
     }
 );
 
-app.use(cors())
-app.use('/graphql', graphqlHTTP({
-    schema,
-    graphiql: true
-}));
-
 const dbConnection = mongoose.connection;
 dbConnection.on('error', err => console.log(`Connection error: ${err}`));
 dbConnection.once('open', () => console.log(`Connected to DB`));
 
-app.listen(PORT, err => {
+server.listen(PORT, err => {
     err ? console.log(err) : console.log(`Server started at ${PORT}!`);
 });
