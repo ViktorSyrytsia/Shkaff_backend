@@ -6,10 +6,9 @@ const userQuery = {
 };
 
 const userMutation = {
-    registerUser: (parent, args) => userService.registerUser(args.user),
     loginUser: (parent, args) => userService.loginUser(args.user),
-    deleteUser: (parent, args) => userService.deleteUser(args.id),
-    updateUser: (parent, args) => userService.updateUser(args),
+    updateUserByToken: (parent, args) => userService.updateUserByToken(args),
+    registerUser: (parent, args) => userService.registerUser(args.user),
 };
 
 export {userQuery, userMutation};

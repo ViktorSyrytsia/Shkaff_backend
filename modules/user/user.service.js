@@ -1,8 +1,10 @@
-import { AuthenticationError, UserInputError } from 'apollo-server';
+import {AuthenticationError, UserInputError} from 'apollo-server';
 import bcrypt from 'bcrypt';
 
 import {User} from '../../models';
 import generateToken from "../../utils/createToken";
+import verifyUser from "../../utils/verifyUser";
+import generatePasswordHash from "../../utils/generatePasswordHash";
 
 class UserService {
     getUsers() {
@@ -61,21 +63,32 @@ class UserService {
         };
     }
 
- /*   async updateUser({id, email, password}) {
-        let hashedPass;
-        await generatePasswordHash(password)
-            .then(hash => hashedPass = String(hash))
-            .catch(err => console.log(err));
+    async updateUserByToken({value, key, token}) {
+        const user = verifyUser(token)
 
-        return User.findOneAndUpdate(
-            {_id: id},
-            {email: email, password: password},
-            {returnOriginal: false}
-        );
-    }*/
+        if (!user) throw new AuthenticationError('Bad token bitch')
 
-    deleteUser(id) {
-        return User.findByIdAndRemove(id)
+        const checkedUser = await this.getUserByFieldOrThrow('email', user.email)
+
+        if (key === 'password') {
+            value = await generatePasswordHash(value)
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            {_id: checkedUser._id},
+            {[key]: value},
+            { new: true },
+        )
+
+        const refreshedToken = await generateToken(updatedUser._id, updatedUser.email);
+
+        return {
+            name: updatedUser.name,
+            id: updatedUser._id,
+            role: updatedUser.role,
+            email: updatedUser.email,
+            token: refreshedToken,
+        }
     }
 }
 
