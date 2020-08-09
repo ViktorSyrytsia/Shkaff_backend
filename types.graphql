@@ -2,6 +2,7 @@
 #import "modules/subcategory/types.graphql"
 #import "modules/product/types.graphql"
 #import "modules/order/types.graphql"
+#import "modules/user/types.graphql"
 
 type Query {
     getCategoryById(id: ID!): Category
@@ -12,6 +13,8 @@ type Query {
     getProducts: [Product!]!
     getOrderById(id: ID!): Order
     getOrders: [Order!]!
+    getUsers: [User!]!
+    getUserByToken: User
 }
 
 type Mutation {
@@ -28,5 +31,8 @@ type Mutation {
     addOrder(order: OrderInput!): Order
     deleteOrder(id: ID!): Order
     updateOrderStatus(id: ID!, status: String): Order
+    loginUser(user: UserInput!): User
+    updateUserByToken(value: String!, key: String!, token: String!): User
+    registerUser(user: UserInput!): User
 }
 

@@ -2,6 +2,7 @@ import {categoryQuery, categoryMutation} from './modules/category/category.resol
 import {subcategoryQuery, subcategoryMutation} from './modules/subcategory/subcategory.resolver';
 import {productQuery, productMutation} from './modules/product/product.resolver';
 import {orderQuery, orderMutation} from './modules/order/order.resolver';
+import {userQuery, userMutation} from './modules/user/user.resolver';
 
 import CategoryService from "./modules/category/category.service";
 import SubcategoryService from "./modules/subcategory/subcategory.service";
@@ -13,12 +14,14 @@ const resolvers = {
         ...subcategoryQuery,
         ...productQuery,
         ...orderQuery,
+        ...userQuery,
     },
     Mutation: {
         ...categoryMutation,
         ...subcategoryMutation,
         ...productMutation,
         ...orderMutation,
+        ...userMutation,
     },
     Category: {
         subcategories: (parent) => SubcategoryService.getSubcategoriesByCategoryId(parent.id),
