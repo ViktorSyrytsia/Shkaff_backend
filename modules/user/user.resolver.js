@@ -2,6 +2,7 @@ import userService from './user.service';
 
 const userQuery = {
     getUsers: () => userService.getUsers(),
+    getUserByToken: (parent, args, context) => userService.getUser(context.user._id),
 };
 
 const userMutation = {

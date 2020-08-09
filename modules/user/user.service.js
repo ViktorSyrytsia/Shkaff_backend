@@ -9,6 +9,10 @@ class UserService {
         return User.find();
     }
 
+    getUser(id) {
+        return this.getUserByFieldOrThrow('_id', id);
+    }
+
     registerUser(data) {
         const user = new User(data);
         return user.save();
