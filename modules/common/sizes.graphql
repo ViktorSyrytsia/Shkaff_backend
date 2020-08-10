@@ -5,6 +5,7 @@ type Sizes {
     l: Int
     xl: Int
     xxl: Int
+    oneSize: Int
 }
 
 input SizesInput {
@@ -14,4 +15,5 @@ input SizesInput {
     l: Int
     xl: Int
     xxl: Int
+    oneSize: Int
 }
