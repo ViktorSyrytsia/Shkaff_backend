@@ -17,6 +17,7 @@ const productSchema = new Schema({
         l: Number,
         xl: Number,
         xxl: Number,
+        oneSize: Number,
     },
     description: String,
     price: Number,
