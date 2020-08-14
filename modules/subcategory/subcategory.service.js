@@ -1,4 +1,4 @@
-import {Subcategory} from '../../models';
+import {Subcategory, Product} from '../../models';
 
 class SubcategoryService {
     getSubcategories() {
@@ -28,7 +28,7 @@ class SubcategoryService {
 
     deleteSubcategory(id) {
         return Promise.all([
-            //Product.deleteMany({categoryId: id}),
+            Product.deleteMany({subcategoryId: id}),
             Subcategory.findByIdAndRemove(id)
         ])
     }
