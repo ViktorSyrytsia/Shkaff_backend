@@ -9,6 +9,7 @@ type Order {
     connectionMethod: String
     products: [OrderProduct]
     status: String
+    orderId: String
     createdAt: Date
 }
 
@@ -18,4 +19,5 @@ input OrderInput {
     connectionMethod: String!
     products: [OrderProductInput]
     status: String
+    orderId: String
 }
