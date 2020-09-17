@@ -8,7 +8,6 @@ import resolvers from './resolvers';
 import schema from './types.graphql';
 
 const server = new ApolloServer({
-    cors: false,
     typeDefs: schema,
     resolvers,
     context: async ({ req }) => {
